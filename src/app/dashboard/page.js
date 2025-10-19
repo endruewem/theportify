@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import TiltedCard from "./components/TiltedCard"; // tambahkan ini
-import "./globals.css";
+import TiltedCard from "../components/TiltedCard"; // tambahkan ini
+import "../globals.css";
 
 export default function HomePage() {
   return (
@@ -11,16 +11,6 @@ export default function HomePage() {
       <header className="header">
         <div className="header-logo">
           ThePortify<span className="demo-tag">(demo V1.3)</span>
-        </div>
-        <div className="header-buttons">
-          
-
-          <Link href="/auth/login">
-          <button className="btn btn-login">Login</button>
-          </Link>
-          <Link href="/auth/signup">
-          <button className="btn btn-get-portify">Get ThePortify</button>
-          </Link>
         </div>
       </header>
 
@@ -47,7 +37,7 @@ export default function HomePage() {
           />
         </div>
 
-        <Link href="/auth/login">
+        <Link href="/profile">
           <button className="btn btn-primary">My Profile</button>
         </Link>
 
@@ -172,7 +162,7 @@ export default function HomePage() {
           <div className="footer-logo">ThePortify</div>
           <p className="footer-social">
             Follow us on: Instagram: <b>@theportify</b> &nbsp; | &nbsp; YouTube:{" "}
-            <b>@theportifyoutube</b> ps: blom ada, nanti dibuat
+            <b>@theportifyoutube</b>
           </p>
         </div>
 

@@ -1,7 +1,6 @@
 /* === IMPORT FONTS === */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@400;500;600;700&display=swap');
 
-
 /* === RESET DASAR === */
 * {
   margin: 0;
@@ -39,51 +38,6 @@ body {
   font-size: 18px;
   font-weight: 700;
   margin-left: 4px;
-}
-
-.header-buttons {
-  display: flex;
-  gap: 15px;
-}
-
-/* === BUTTONS === */
-.btn {
-  font-family: 'Poppins', sans-serif;
-  border: none;
-  border-radius: 9px;
-  padding: 9px 17px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-login {
-  background-color: #ffffff;
-  color: #000000;
-}
-.btn-login:hover {
-  background-color: #ddd;
-}
-
-.btn-get-portify {
-  background: linear-gradient(90deg, #007EFF, #01B6FF);
-  color: white;
-}
-.btn-get-portify:hover {
-  opacity: 0.9;
-}
-
-/* OUR STORY BUTTON */
-.btn-ourstory {
-  background-color: transparent;
-  color: #333;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.btn-ourstory:hover {
-  background-color: #ebebeb;
-  color: rgb(0, 0, 0);
 }
 
 /* === MAIN CONTENT === */
@@ -402,3 +356,14 @@ body {
   margin-top: 10px; /* kecil aja biar geser dikit ke atas */
   margin-bottom: 45; /* jangan dikasih negatif */
 }
+
+
+
+
+
+
+
+
+
+
+
