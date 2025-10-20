@@ -1,22 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import TiltedCard from "../components/TiltedCard"; // tambahkan ini
-import "../globals.css";
+import TiltedCard from "../components/TiltedCard"; // tetap sama seperti di homepage
+import styles from "./dashboard.module.css";
 
-export default function HomePage() {
+export default function DashboardPage() {
   return (
     <>
       {/* ===== HEADER ===== */}
-      <header className="header">
-        <div className="header-logo">
-          ThePortify<span className="demo-tag">(demo V1.3)</span>
+      <header className={styles.header}>
+        <div className={styles.headerLogo}>
+          ThePortify<span className={styles.demoTag}>(demo V1.4)</span>
         </div>
+
+        <div className={styles.profileCircle}></div>
+
+
       </header>
 
       {/* ===== MAIN CONTENT ===== */}
-      <main className="main-content">
-        {/* ====== Tambahkan efek TiltedCard di sini ====== */}
+      <main className={styles.mainContent}>
         <div className="flex justify-center items-center mt-10">
           <TiltedCard
             imageSrc="/logogede.png"
@@ -30,58 +33,46 @@ export default function HomePage() {
             showMobileWarning={false}
             showTooltip={true}
             displayOverlayContent={true}
-            overlayContent={
-              <p className="tilted-card-demo-text text-white text-center">
-              </p>
-            }
           />
         </div>
 
         <Link href="/profile">
-          <button className="btn btn-primary">My Profile</button>
+          <button className={styles.btnPrimary}>My Profile</button>
         </Link>
 
-        <h1 className="main-title">
-          Welcome, to <span className="highlight">ThePortify</span>!
+        <h1 className={styles.mainTitle}>
+          Welcome, to <span className={styles.highlight}>ThePortify</span>!
         </h1>
-        <p className="main-subtitle">
+        <p className={styles.mainSubtitle}>
           ThePortify is the portfolio workspace where creators <br />
           showcase their work in minutes.
         </p>
-      
-        {/* ============================================== */}
       </main>
 
-
-
-
-
       {/* ===== FEATURE SECTION ===== */}
-      <section className="features">
-
-
-        <h2 className="features-title">
+      <section className={styles.features}>
+        <h2 className={styles.featuresTitle}>
           Heres some of the highlights of the features you get <br />
-          when you build portfolio with <span className="highlight">ThePortify</span>
+          when you build portfolio with <span className={styles.highlight}>ThePortify</span>
         </h2>
 
-        <div className="feature-list">
-          <div className="feature-item">
-            <div className="feature-text">
+        <div className={styles.featureList}>
+          <div className={styles.featureItem}>
+            <div className={styles.featureText}>
               <h3>Guided Template</h3>
               <p>
                 <b>No guesswork.</b> Our single, structured template shows you exactly
                 where to place titles, images, and content. Just fill in your details
-                and your portfolio is ready clean, organized, and professional.
+                and your portfolio is ready — clean, organized, and professional.
               </p>
             </div>
-            <div className="feature-image">
-        <img src="/gambar1.png" alt="Guided Template" />
-      </div>
+            <div className={styles.featureImage}>
+              <img src="/gambar1.png" alt="Guided Template" />
+            </div>
           </div>
 
-          <div className="feature-item">
-            <div className="feature-text">
+          <div className={styles.featureItem}>
+            <div className={styles.featureText}>
               <h3>Instant Share</h3>
               <p>
                 <b>Show it to the world.</b> Share your portfolio with a simple link,
@@ -89,14 +80,13 @@ export default function HomePage() {
                 wherever they are.
               </p>
             </div>
-                  <div className="feature-image">
-        <img src="/gambar2.png" alt="Instant Share" />
-      </div>
-
+            <div className={styles.featureImage}>
+              <img src="/gambar2.png" alt="Instant Share" />
+            </div>
           </div>
 
-          <div className="feature-item">
-            <div className="feature-text">
+          <div className={styles.featureItem}>
+            <div className={styles.featureText}>
               <h3>Download as PDF</h3>
               <p>
                 <b>One click download.</b> Convert your portfolio into a polished PDF
@@ -104,14 +94,13 @@ export default function HomePage() {
                 and employers.
               </p>
             </div>
-            <div className="feature-image">
-        <img src="/gambar3.png" alt="Download as PDF" />
-      </div>
+            <div className={styles.featureImage}>
+              <img src="/gambar3.png" alt="Download as PDF" />
+            </div>
           </div>
         </div>
 
-
-                {/* ===== NEW IMAGE SHOWCASE SECTION ===== */}
+        {/* ===== IMAGE SHOWCASE SECTION ===== */}
         <section className="image-showcase">
           <h2 className="image-showcase-title">
             Meet our team
@@ -143,17 +132,14 @@ export default function HomePage() {
         </p>
 
 
- {/* ===== MADING / IMAGE BOARD SECTION ===== */}
-        <section className="mading-section">
+        {/* ===== MADING SECTION ===== */}
+        <section className={styles.madingSection}>
           <img
             src="/mading.png"
             alt="ThePortify Creative Board"
-            className="mading-image"
+            className={styles.madingImage}
           />
         </section>
-
-
-
       </section>
 
       {/* ===== FOOTER ===== */}
@@ -162,7 +148,7 @@ export default function HomePage() {
           <div className="footer-logo">ThePortify</div>
           <p className="footer-social">
             Follow us on: Instagram: <b>@theportify</b> &nbsp; | &nbsp; YouTube:{" "}
-            <b>@theportifyoutube</b>
+            <b>@theportifyoutube</b> ps: blom ada, nanti dibuat
           </p>
         </div>
 

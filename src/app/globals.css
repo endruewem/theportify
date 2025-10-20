@@ -118,6 +118,7 @@ body {
 }
 .btn-primary:hover {
   opacity: 0.9;
+  transform: scale(1.05);
 }
 
 /* === TITLE === */
@@ -329,39 +330,6 @@ body {
 
 /* === FOOTER === */
 .footer {
-  background-color: #F3F3F3;
-  border-top: 0px solid #eee;
-  border-bottom: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* bagi ruang atas & bawah */
-  align-items: center;
-  padding: 20; /* buang padding biar rapat */
-  margin: 0;
-}
-
-/* Bagian atas footer (logo + social) */
-.footer-left {
-  width: 100%;
-  padding: 20px 135px; /* kasih sedikit ruang biar gak nempel tepi banget */
-  box-sizing: border-box;
-}
-
-.footer-logo {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 30px;
-  color: #7F7F7F;
-}
-
-.footer-social {
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px;
-  color: #7F7F7F;
-}
-
-/* === FOOTER === */
-.footer {
   background-color: #007EFF;
   border-top: 1px solid #ffffff;
   display: flex;
@@ -380,6 +348,7 @@ body {
   padding: 20px 135px;
   box-sizing: border-box;
 }
+
 
 .footer-logo {
   font-family: 'Poppins', sans-serif;
@@ -402,3 +371,4 @@ body {
   margin-top: 10px; /* kecil aja biar geser dikit ke atas */
   margin-bottom: 45; /* jangan dikasih negatif */
 }
+

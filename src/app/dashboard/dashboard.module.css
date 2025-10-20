@@ -1,12 +1,4 @@
-/* === IMPORT FONTS === */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@400;500;600;700&display=swap');
-
-/* === RESET DASAR === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 body {
   background-color: #fff;
@@ -27,21 +19,42 @@ body {
   z-index: 100;
 }
 
-.header-logo {
+.headerLogo {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 32px;
   color: #000;
 }
 
-.demo-tag {
+.demoTag {
   font-size: 18px;
   font-weight: 700;
   margin-left: 4px;
 }
 
+
+
+/* === PROFILE CIRCLE === */
+.profileCircle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #007EFF; /* placeholder abu-abu */
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.profileCircle:hover {
+  border-color: #000000;
+  transform: scale(1.05);
+}
+
+
+
+
+
 /* === MAIN CONTENT === */
-.main-content {
+.mainContent {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,15 +62,8 @@ body {
   padding: 70px 20px 60px;
 }
 
-.main-logo img {
-  width: 200px;
-  height: 200px;
-  object-fit: contain;
-  margin-bottom: 30px;
-}
-
-/* === MY PROFILE BUTTON === */
-.btn-primary {
+/* === BUTTON === */
+.btnPrimary {
   background: linear-gradient(90deg, #007EFF, #01B6FF);
   color: white;
   font-family: 'Poppins', sans-serif;
@@ -69,13 +75,16 @@ body {
   margin-top: 23px;
   margin-bottom: 20px;
   transition: 0.3s;
+  border: none;
+  cursor: pointer;
 }
-.btn-primary:hover {
+.btnPrimary:hover {
   opacity: 0.9;
+  transform: scale(1.05);
 }
 
-/* === TITLE === */
-.main-title {
+/* === TITLE & SUBTITLE === */
+.mainTitle {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 52px;
@@ -86,8 +95,7 @@ body {
   color: #007EFF;
 }
 
-/* === SUBTITLE === */
-.main-subtitle {
+.mainSubtitle {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   font-size: 22px;
@@ -96,16 +104,14 @@ body {
   line-height: 1.5;
 }
 
-
-
-/* === FEATURES SECTION (NEW LAYOUT) === */
+/* === FEATURES SECTION === */
 .features {
   background-color: #fff;
   padding: 150px 160px 60px;
   text-align: center;
 }
 
-.features-title {
+.featuresTitle {
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-size: 22px;
@@ -114,36 +120,29 @@ body {
   line-height: 1.5;
 }
 
-/* Container semua item */
-.feature-list {
+.featureList {
   display: flex;
   flex-direction: column;
   gap: 30px;
   align-items: center;
 }
 
-
-
-/* Card tiap fitur */
-.feature-item {
+.featureItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 850px;
-  background-color: #fff;
   border: 1.4px solid #d9d9d9;
   border-radius: 8px;
   padding: 24px 32px;
 }
 
-
-/* Teks dalam card */
-.feature-text {
+.featureText {
   text-align: left;
   flex: 1;
 }
 
-.feature-text h3 {
+.featureText h3 {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 18px;
@@ -151,7 +150,7 @@ body {
   margin-bottom: 6px;
 }
 
-.feature-text p {
+.featureText p {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-size: 15px;
@@ -160,8 +159,7 @@ body {
   max-width: 600px;
 }
 
-/* Kotak biru di kanan */
-.feature-image {
+.featureImage {
   width: 140px;
   height: 140px;
   border-radius: 12px;
@@ -170,26 +168,20 @@ body {
   margin-left: 24px;
 }
 
-.feature-image img {
+.featureImage img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
   border-radius: 12px;
+  object-fit: cover;
 }
 
+/* === IMAGE SHOWCASE === */
+.imageShowcase {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
 
-
-
-
-
-
-
-
-
-
-/* ===== IMAGE SHOWCASE SECTION ===== */
-
-.image-showcase-title {
+.imageShowcaseTitle {
   font-size: 1.8rem;
   font-weight: 600;
   color: #1e1e1e;
@@ -197,7 +189,7 @@ body {
   margin-bottom: 40px;
 }
 
-.image-showcase-list {
+.imageShowcaseList {
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -205,7 +197,7 @@ body {
   gap: 50px;
 }
 
-.image-showcase-item {
+.imageShowcaseItem {
   width: 250px;
   height: 250px;
   border-radius: 12px;
@@ -215,150 +207,85 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.image-showcase-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.image-showcase-item:hover {
+.imageShowcaseItem:hover {
   transform: translateY(-8px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   
 }
 
-.image-caption {
+.imageCaption {
   margin-top: 10px;
   font-size: 0.95rem;
   color: #333;
   font-weight: 500;
 }
 
-.image-showcase {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-}
-
-
-
-
-
-
-
-
-/* Quote di bawah */
-.feature-quote {
+/* === QUOTE === */
+.featureQuote {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-size: 20px;
   color: #000;
   margin-top: 90px;
   margin-bottom: 20px;
-  font-style: normal;
 }
 
-
-
-/* === MADING SECTION (SATU GAMBAR BESAR) === */
-.mading-section {
+/* === MADING SECTION === */
+.madingSection {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 200px 0 70px; /* jarak atas & bawah */
+  margin: 200px 0 70px;
 }
 
-.mading-image {
+.madingImage {
   width: 850px;
-  height: 500px; /* biar nggak terlalu lebar di layar besar */
+  height: 500px;
   border-radius: 16px;
   box-shadow: 0 6px 18px rgba(52, 52, 52, 0.15);
   object-fit: cover;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.mading-image:hover {
+.madingImage:hover {
   transform: scale(1.02);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* === FOOTER === */
 .footer {
-  background-color: #F3F3F3;
-  border-top: 0px solid #eee;
-  border-bottom: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* bagi ruang atas & bawah */
-  align-items: center;
-  padding: 20; /* buang padding biar rapat */
-  margin: 0;
-}
-
-/* Bagian atas footer (logo + social) */
-.footer-left {
-  width: 100%;
-  padding: 20px 135px; /* kasih sedikit ruang biar gak nempel tepi banget */
-  box-sizing: border-box;
-}
-
-.footer-logo {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 30px;
-  color: #7F7F7F;
-}
-
-.footer-social {
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px;
-  color: #7F7F7F;
-}
-
-/* === FOOTER === */
-.footer {
   background-color: #007EFF;
-  border-top: 1px solid #ffffff;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  padding: 0; /* buang padding biar nempel bawah */
-  margin: 0;
   width: 100%;
-  flex-shrink: 0;
 }
 
-/* Bagian atas footer (logo + social) */
-.footer-left {
+.footerLeft {
   width: 100%;
   padding: 20px 135px;
-  box-sizing: border-box;
 }
 
-.footer-logo {
+.footerLogo {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 30px;
-  color: #ffffff;
+  color: #fff;
 }
 
-.footer-social {
+.footerSocial {
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
-  color: #ffffff;
+  color: #fff;
 }
 
-.footer-bottom {
+.footerBottom {
   font-size: 210px;
   font-weight: 700;
-  color: #ffffff;
-  line-height: 0.8; /* bikin hurufnya rapet */
-  margin-top: 10px; /* kecil aja biar geser dikit ke atas */
-  margin-bottom: 45; /* jangan dikasih negatif */
+  color: #fff;
+  line-height: 0.8;
+  margin-top: 10px;
 }
-
-
-
 
 
 
