@@ -1,10 +1,16 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import TiltedCard from "./components/TiltedCard"; // tambahkan ini
+import TiltedCard from "./components/TiltedCard";
+import AuthModal from "./components/AuthModal";
 import "./globals.css";
+import "./components/AuthModal.css"; // ✅ tambahkan ini supaya CSS AuthModal ikut kebaca
 
 export default function HomePage() {
+  const [showLogin, setShowLogin] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
+
   return (
     <>
       {/* ===== HEADER ===== */}
@@ -13,20 +19,29 @@ export default function HomePage() {
           ThePortify<span className="demo-tag">(demo V1.4)</span>
         </div>
         <div className="header-buttons">
-          
-
-          <Link href="/auth/login">
-          <button className="btn btn-login">Login</button>
-          </Link>
-          <Link href="/auth/signup">
-          <button className="btn btn-get-portify">Get ThePortify</button>
-          </Link>
+          <button className="btn btn-login" onClick={() => setShowLogin(true)}>
+            Login
+          </button>
+          <button
+            className="btn btn-get-portify"
+            onClick={() => setShowSignup(true)}
+          >
+            Get ThePortify
+          </button>
         </div>
       </header>
 
+      {/* ===== MODAL POPUP ===== */}
+      {showLogin && (
+        <AuthModal mode="login" onClose={() => setShowLogin(false)} />
+      )}
+      {showSignup && (
+        <AuthModal mode="signup" onClose={() => setShowSignup(false)} />
+      )}
+
       {/* ===== MAIN CONTENT ===== */}
       <main className="main-content">
-        {/* ====== Tambahkan efek TiltedCard di sini ====== */}
+        {/* ====== TiltedCard di tengah ====== */}
         <div className="flex justify-center items-center mt-10">
           <TiltedCard
             imageSrc="/logogede.png"
@@ -41,15 +56,15 @@ export default function HomePage() {
             showTooltip={true}
             displayOverlayContent={true}
             overlayContent={
-              <p className="tilted-card-demo-text text-white text-center">
-              </p>
+              <p className="tilted-card-demo-text text-white text-center"></p>
             }
           />
         </div>
 
-        <Link href="/auth/login">
-          <button className="btn btn-primary">My Profile</button>
-        </Link>
+        {/* ===== Tombol My Profile ===== */}
+        <button className="btn btn-primary" onClick={() => setShowSignup(true)}>
+          My Profile
+        </button>
 
         <h1 className="main-title">
           Welcome, to <span className="highlight">ThePortify</span>!
@@ -58,8 +73,6 @@ export default function HomePage() {
           ThePortify is the portfolio workspace where creators <br />
           showcase their work in minutes.
         </p>
-      
-        {/* ============================================== */}
       </main>
 
 

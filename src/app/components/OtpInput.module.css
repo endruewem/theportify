@@ -1,0 +1,68 @@
+.otpContainer {
+  display: flex;
+  justify-content: center;
+  gap: 14px; /* jarak antar kotak */
+  margin: 30px 0 25px; /* jarak atas-bawah (ke teks di atas & bawah) */
+}
+
+.otpBox {
+  width: 50px;
+  height: 60px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  border: 2px solid #ffffff;
+  border-radius: 12px;
+  background-color: #ebebeb;
+  color: #000000;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Saat fokus */
+.otpBox:focus {
+  border-color: #000000;
+  background-color: #f7f7f7;
+  transform: scale(1.05);
+}
+
+/* Saat kosong (biar kelihatan lebih soft) */
+.otpBox:placeholder-shown {
+  background-color: #fcfcfc;
+  border-color: #ccc;
+}
+
+/* Optional: efek getar kalau salah kode nanti */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+.otpContainer.error .otpBox {
+  border-color: #ff4d4d;
+  background-color: #ffecec;
+  animation: shake 0.3s ease-in-out;
+}
+
+
+.validateButton {
+  margin-top: 0px;
+  margin-bottom: 20px;
+  background-color: #007eff;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.validateButton:hover {
+  background-color: #005fcc;
+  transform: scale(1.05);
+}
+
+

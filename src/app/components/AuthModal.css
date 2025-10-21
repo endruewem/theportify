@@ -1,0 +1,175 @@
+.auth-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(122, 122, 122, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  
+}
+
+.auth-modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 150px 155px;  /* ➜ Tambah padding biar isi modal lega */
+  width: 620px;         /* ➜ Ganti dari 400px ke 520px biar pop-up lebih lebar */
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.3s ease;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.auth-modal h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.auth-modal p {
+  font-size: 14px;
+  color: #272727;
+  margin-bottom: 18px;
+}
+
+.auth-google-btn,
+.auth-email-btn {
+  width: 320px;
+  display: flex;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+ 
+  gap: 45px;
+  border: 1px solid #000000;
+  border-radius: 40px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 400;
+  background: #ffffff;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.auth-google-btn:hover,
+.auth-email-btn:hover {
+  background: #fbfbfb;
+}
+
+.auth-google-btn img,
+.auth-email-btn img {
+  width: 22px;
+  height: 22px;
+}
+
+.auth-input {
+  width: 100%;
+  background: #f7f7f7;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #000000;
+  margin-bottom: 18px;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.auth-next-btn {
+  width: 120px;
+  background: #007EFF;
+  color: white;
+  font-weight: 500;
+  border: none;
+  border-radius: 30px;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-next-btn:hover {
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+
+.auth-footer-text {
+  font-size: 13px;
+  color: #666;
+  margin-top: 20px;
+}
+
+.auth-link {
+  color: #007eff;
+  cursor: pointer;
+}
+
+.close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+/* ==== Tambahan untuk Terms & Back Option ==== */
+
+.auth-modal .terms-text {
+  font-size: 11.5px;
+  color: #474747 !important;
+  margin-top: 12px;
+  margin-bottom: 5px;
+  margin-left: 18px;
+  line-height: 1.4;
+  max-width: 90%;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.auth-modal .terms-text .auth-link {
+  color: #096bcd;
+  cursor: pointer;
+  font-weight: 500;
+  text-decoration: underline;
+  
+}
+
+.auth-modal .terms-text .auth-link:hover {
+  text-decoration: underline;
+}
+
+.auth-modal .back-option {
+  font-size: 13px;
+  color: #000000;
+  margin-top: 16px;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.2s;
+}
+
+.auth-modal .back-option:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+
+
+
+
+
+
