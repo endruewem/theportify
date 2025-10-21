@@ -11,8 +11,8 @@ export default function OurStoryPage() {
 
     <div className={styles.container}>
       {/* Tombol Back */}
-      <Link href="/" className={styles.backButton}>
-    Back to Home
+      <Link href="/dashboard" className={styles.backButton}>
+    Home
       </Link>
 
       {/* Judul Utama */}

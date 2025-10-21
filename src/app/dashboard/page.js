@@ -1,10 +1,30 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import TiltedCard from "../components/TiltedCard"; // tetap sama seperti di homepage
+import TiltedCard from "../components/TiltedCard";
 import styles from "./dashboard.module.css";
 
 export default function DashboardPage() {
+  // === STATE UNTUK DROPDOWN ===
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  // === FUNCTION UNTUK TOGGLE DROPDOWN ===
+  const toggleDropdown = () => {
+    setIsDropdownOpen((prev) => !prev);
+  };
+
+  // === TUTUP DROPDOWN SAAT KLIK DI LUAR AREA ===
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!e.target.closest(`.${styles.profileWrapper}`)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    window.addEventListener("click", handleClickOutside);
+    return () => window.removeEventListener("click", handleClickOutside);
+  }, []);
+
   return (
     <>
       {/* ===== HEADER ===== */}
@@ -13,9 +33,69 @@ export default function DashboardPage() {
           ThePortify<span className={styles.demoTag}>(demo V1.4)</span>
         </div>
 
-        <div className={styles.profileCircle}></div>
+        {/* === PROFILE WRAPPER === */}
+        <div className={styles.profileWrapper}>
+          {/* === PROFILE CIRCLE === */}
+          <div
+            className={styles.profileCircle}
+            onClick={toggleDropdown}
+          ></div>
 
-
+          {/* === DROPDOWN MENU === */}
+          {isDropdownOpen && (
+            <div className={styles.dropdownMenu}>
+              <Link href="/viewprofile" className={styles.dropdownItem}>
+               <img
+                  src="/logo1.png"
+                  alt="pic1"
+                  className={styles.dropdownIcon}
+                />
+                View Profile
+              </Link>
+              <Link href="/dashboard" className={styles.dropdownItem}>
+               <img
+                  src="/logo2.png"
+                  alt="pic2"
+                  className={styles.dropdownIcon}
+                />
+                Home
+              </Link>
+              <Link href="/settings" className={styles.dropdownItem}>
+              <img
+                  src="/logo3.png"
+                  alt="pic3"
+                  className={styles.dropdownIcon}
+                />
+                Settings
+              </Link>
+              <Link href="/ourstory" className={styles.dropdownItem}>
+              <img
+                  src="/logo4.png"
+                  alt="pic4"
+                  className={styles.dropdownIcon}
+                />
+                Our Story
+              </Link>
+              <Link href="/help" className={styles.dropdownItem}>
+              <img
+                  src="/logo5.png"
+                  alt="pic5"
+                  className={styles.dropdownIcon}
+                />
+                Help
+              </Link>
+              <Link href="/" className={styles.dropdownItem}>
+              <img
+                  src="/logo6.png"
+                  alt="pic6"
+                  className={styles.dropdownIcon}
+                />
+              Sign Out
+              </Link>
+              
+            </div>
+          )}
+        </div>
       </header>
 
       {/* ===== MAIN CONTENT ===== */}
@@ -148,7 +228,7 @@ export default function DashboardPage() {
           <div className="footer-logo">ThePortify</div>
           <p className="footer-social">
             Follow us on: Instagram: <b>@theportify</b> &nbsp; | &nbsp; YouTube:{" "}
-            <b>@theportifyoutube</b> ps: blom ada, nanti dibuat
+            <b>@theportifyoutube</b> ps: blom ada, nanti dibuat &nbsp; | &nbsp;  TikTok: <b>@ThePortify</b>
           </p>
         </div>
 

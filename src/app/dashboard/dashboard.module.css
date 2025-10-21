@@ -32,12 +32,81 @@ body {
   margin-left: 4px;
 }
 
+/* === PROFILE AREA === */
+.profileWrapper {
+  position: relative;
+}
+
+/* === PROFILE CIRCLE === */
+.profileCircle {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #d9d9d9;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.profileCircle:hover {
+  border-color: #000;
+  transform: scale(1.05);
+}
+
+/* === DROPDOWN MENU === */
+.dropdownMenu {
+  position: absolute;
+  top: 60px;
+  right: -20;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 200;
+  min-width: 270px; /* ← Diperlebar */
+  display: flex;
+  flex-direction: column;
+}
+
+/* === DROPDOWN ITEM === */
+.dropdownItem {
+  display: flex;
+  flex-direction: row; /* ikon di kiri, teks di kanan */
+  align-items: center; /* vertikal sejajar tengah */
+  gap: 20px; /* jarak antara ikon dan teks */
+  padding: 12px 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.dropdownItem:hover {
+  background-color: #f5f5f5;
+}
+
+/* === ICON DI SETIAP ITEM === */
+.dropdownIcon {
+  width: 28px;   /* diperbesar sedikit */
+  height: 28px;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(1px); /* sedikit dorong ke tengah vertikal */
+}
+
+
+
+
 
 
 /* === PROFILE CIRCLE === */
 .profileCircle {
-  width: 44px;
-  height: 44px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   background-color: #007EFF; /* placeholder abu-abu */
   cursor: pointer;
@@ -45,9 +114,14 @@ body {
 }
 
 .profileCircle:hover {
-  border-color: #000000;
+  border-color: #007EFF;
   transform: scale(1.05);
 }
+
+
+
+
+
 
 
 

@@ -172,7 +172,7 @@ export default function HomePage() {
           <div className="footer-logo">ThePortify</div>
           <p className="footer-social">
             Follow us on: Instagram: <b>@theportify</b> &nbsp; | &nbsp; YouTube:{" "}
-            <b>@theportifyoutube</b> ps: blom ada, nanti dibuat
+            <b>@theportifyoutube</b> ps: blom ada, nanti dibuat | TikTok: <b>@ThePortify</b>
           </p>
         </div>
 

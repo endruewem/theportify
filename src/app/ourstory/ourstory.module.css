@@ -13,18 +13,19 @@
 .backButton {
    font-family: 'Poppins', sans-serif;
   border: none;
-  border-radius: 9px;
+  border-radius: 10px;
   padding: 9px 13px;
   font-size: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: linear-gradient(90deg, #007EFF, #01B6FF);
+  background: #007EFF;
   color: white;
+  text-decoration: none;
   
 }
 
 .backButton:hover {
-  background: linear-gradient(90deg, #007af5, #00aff5);
+  background: #007EFF;
   color: rgb(255, 255, 255);
   opacity: 0.9;
 }

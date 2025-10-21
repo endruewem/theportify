@@ -36,27 +36,28 @@
 }
 
 .logo {
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
-  font-size: 35px;
+  font-size: 32px;
   color: #000;
 }
 
 .backBtn,
 .shareBtn {
   border: none;
-  border-radius: 8px;
-  padding: 10px 24px;
-  font-size: 18px;
+  border-radius: 9px;
+  padding: 9px 17px;
+  font-size: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .backBtn {
-  background-color: #eee;
-  color: #555;
+  background-color: #007EFF;
+  color: #ffffff;
 }
 .backBtn:hover {
-  background-color: #ddd;
+  opacity: 0.9;
 }
 
 .shareBtn {
