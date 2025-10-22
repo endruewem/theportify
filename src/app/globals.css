@@ -37,7 +37,7 @@ body {
 
 .demo-tag {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 400;
   margin-left: 4px;
 }
 
@@ -50,11 +50,12 @@ body {
 .btn {
   font-family: 'Poppins', sans-serif;
   border: none;
-  border-radius: 9px;
+  border-radius: 40px;
   padding: 9px 17px;
   font-size: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
+  
 }
 
 .btn-login {
@@ -93,6 +94,7 @@ body {
   align-items: center;
   text-align: center;
   padding: 70px 20px 60px;
+  
 }
 
 .main-logo img {
@@ -109,7 +111,7 @@ body {
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-size: 18px;
-  border-radius: 14px;
+  border-radius: 40px;
   width: 180px;
   height: 55px;
   margin-top: 23px;

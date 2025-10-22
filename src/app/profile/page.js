@@ -142,7 +142,7 @@ export default function ProfilePage() {
               />
             ) : (
               <label className={styles.uploadLabel}>
-                Masukan Foto Anda
+                Insert your photo
                 <input type="file" onChange={handleImageUpload} hidden />
               </label>
             )}
@@ -405,20 +405,16 @@ export default function ProfilePage() {
 </section>
 
 
-        {/* ---------- TOMBOL SAVE ---------- */}
-        <div className={styles.saveBar}>
-          <button className={styles.saveBtn}>Save</button>
-          <button className={styles.pdfBtn}>Save as PDF</button>
-        </div>
+    
       </main>
 
       {/* ===== FOOTER ===== */}
-      <footer className={styles.footer}>
-        <div className={styles.footerLeft}>
-          <div className={styles.logo}>ThePortify</div>
-          <p>Follow us on : Instagram & YouTube</p>
-        </div>
-      </footer>
+              <footer className={styles.footer}>
+          <div className={styles.saveBar}>
+            <button className={styles.saveBtn}>Save</button>
+            <button className={styles.pdfBtn}>Save as PDF</button>
+          </div>
+        </footer>
     </>
   );
 }

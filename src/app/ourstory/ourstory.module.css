@@ -1,33 +1,12 @@
 .container {
-  max-width: 1000px;
+  max-width: 950px;
   margin: 0 auto;
   padding: 50px 0px;
   font-family: "Poppins", sans-serif;
   color: #222;
   line-height: 1.7;
-  margin-top: 25px;
+  margin-top: -10px;
   margin-bottom: 25px;
-}
-
-/* Tombol Back */
-.backButton {
-   font-family: 'Poppins', sans-serif;
-  border: none;
-  border-radius: 10px;
-  padding: 9px 13px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  background: #007EFF;
-  color: white;
-  text-decoration: none;
-  
-}
-
-.backButton:hover {
-  background: #007EFF;
-  color: rgb(255, 255, 255);
-  opacity: 0.9;
 }
 
 /* Judul utama */

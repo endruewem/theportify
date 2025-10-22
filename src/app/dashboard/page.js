@@ -225,7 +225,7 @@ export default function DashboardPage() {
           <div className="footer-logo">ThePortify</div>
           <p className="footer-social">"Thank you for visiting ThePortify and taking a moment to discover what were building with passion and purpose"</p>
           <p className="footer-social">
-            Made with ❤️ by ThePortif Team &nbsp; - &nbsp; © 2025 &nbsp; | &nbsp; All right reserved. &nbsp; | &nbsp; @theportify 
+            Made with ❤️ by ThePortify Team &nbsp; - &nbsp; © 2025 &nbsp; | &nbsp; All right reserved. &nbsp; | &nbsp; @theportify 
           </p>
          
         

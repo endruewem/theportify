@@ -16,7 +16,7 @@ export default function HomePage() {
       {/* ===== HEADER ===== */}
       <header className="header">
         <div className="header-logo">
-          ThePortify<span className="demo-tag">(demo V1.4)</span>
+          ThePortify<span className="demo-tag">(demo V1.5)</span>
         </div>
         <div className="header-buttons">
           <button className="btn btn-login" onClick={() => setShowLogin(true)}>
