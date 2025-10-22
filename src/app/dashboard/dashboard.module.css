@@ -13,10 +13,11 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 20px 60px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 100;
+  border-bottom: 3px solid #ededed;
 }
 
 .headerLogo {
@@ -28,9 +29,80 @@ body {
 
 .demoTag {
   font-size: 18px;
-  font-weight: 700;
   margin-left: 4px;
 }
+
+
+
+
+
+
+
+
+.sidebar {
+  position: fixed;
+  top: 89px;
+  left: 0;
+  width: 265px;
+  height: calc(100vh - 64px);
+  background: #ffffff;
+  border-right: 2px solid #ededed;
+  border-top: 2px solid #ededed;
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 250;
+
+  /* kondisi awal (tertutup) */
+  transform: translateX(-100%);
+  transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* saat sidebar dibuka */
+.sidebar.show {
+  transform: translateX(0);
+  transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+
+}
+
+/* item sidebar */
+.sidebarItem {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: #424242;
+  text-decoration: none;
+  padding: 10px 34px;
+  border-radius: 10px;
+  transition: color 0.25s ease;
+}
+
+/* hover: cuma ubah warna teks */
+.sidebarItem:hover {
+  color: #000;
+  background: none;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* === PROFILE AREA === */
 .profileWrapper {
@@ -52,6 +124,32 @@ body {
   border-color: #000;
   transform: scale(1.05);
 }
+
+/* === HAMBURGER ICON === */
+.hamburger {
+  width: 26px;
+  height: 17px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  margin-right: 15px;
+  margin-left: -30px;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #888888;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger:hover span {
+  background-color: #515151;
+}
+
 
 /* === DROPDOWN MENU === */
 .dropdownMenu {
@@ -143,7 +241,7 @@ body {
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-size: 18px;
-  border-radius: 14px;
+  border-radius:20px;
   width: 180px;
   height: 55px;
   margin-top: 23px;
@@ -362,6 +460,35 @@ body {
 }
 
 
+.sidebarItem {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* jarak antara icon dan teks */
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: #424242;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: background 0.25s ease, transform 0.2s;
+}
+
+.sidebarItem:hover {
+  background: none;
+  font-weight: 500;
+  transform: none;
+  color: #000; /* boleh kalau cuma mau warna teks berubah */
+}
+
+
+.sidebarIcon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 
 

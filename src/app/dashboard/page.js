@@ -8,6 +8,9 @@ import styles from "./dashboard.module.css";
 export default function DashboardPage() {
   // === STATE UNTUK DROPDOWN ===
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  
+
 
   // === FUNCTION UNTUK TOGGLE DROPDOWN ===
   const toggleDropdown = () => {
@@ -28,75 +31,69 @@ export default function DashboardPage() {
   return (
     <>
       {/* ===== HEADER ===== */}
-      <header className={styles.header}>
-        <div className={styles.headerLogo}>
-          ThePortify<span className={styles.demoTag}>(demo V1.4)</span>
-        </div>
+     <header className={styles.header}>
+  <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+    <div className={styles.hamburger} onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
 
-        {/* === PROFILE WRAPPER === */}
-        <div className={styles.profileWrapper}>
-          {/* === PROFILE CIRCLE === */}
-          <div
-            className={styles.profileCircle}
-            onClick={toggleDropdown}
-          ></div>
+    <div className={styles.headerLogo}>
+      ThePortify<span className={styles.demoTag}>(demo V1.5)</span>
+    </div>
+  </div>
 
-          {/* === DROPDOWN MENU === */}
-          {isDropdownOpen && (
-            <div className={styles.dropdownMenu}>
-              <Link href="/viewprofile" className={styles.dropdownItem}>
-               <img
-                  src="/logo1.png"
-                  alt="pic1"
-                  className={styles.dropdownIcon}
-                />
-                View Profile
-              </Link>
-              <Link href="/dashboard" className={styles.dropdownItem}>
-               <img
-                  src="/logo2.png"
-                  alt="pic2"
-                  className={styles.dropdownIcon}
-                />
-                Home
-              </Link>
-              <Link href="/settings" className={styles.dropdownItem}>
-              <img
-                  src="/logo3.png"
-                  alt="pic3"
-                  className={styles.dropdownIcon}
-                />
-                Settings
-              </Link>
-              <Link href="/ourstory" className={styles.dropdownItem}>
-              <img
-                  src="/logo4.png"
-                  alt="pic4"
-                  className={styles.dropdownIcon}
-                />
-                Our Story
-              </Link>
-              <Link href="/help" className={styles.dropdownItem}>
-              <img
-                  src="/logo5.png"
-                  alt="pic5"
-                  className={styles.dropdownIcon}
-                />
-                Help
-              </Link>
-              <Link href="/" className={styles.dropdownItem}>
-              <img
-                  src="/logo6.png"
-                  alt="pic6"
-                  className={styles.dropdownIcon}
-                />
-              Sign Out
-              </Link>
-              
-            </div>
-          )}
-        </div>
-      </header>
+  <div className={styles.profileWrapper}>
+    <div className={styles.profileCircle} onClick={toggleDropdown}></div>
+
+    {isDropdownOpen && (
+      <div className={styles.dropdownMenu}>
+        <Link href="/viewprofile" className={styles.dropdownItem}>
+          <img src="/logo1.png" alt="pic1" className={styles.dropdownIcon} />
+          View Profile
+        </Link>
+        <Link href="/dashboard" className={styles.dropdownItem}>
+          <img src="/logo2.png" alt="pic2" className={styles.dropdownIcon} />
+          Home
+        </Link>
+        <Link href="/settings" className={styles.dropdownItem}>
+          <img src="/logo3.png" alt="pic3" className={styles.dropdownIcon} />
+          Settings
+        </Link>
+        <Link href="/ourstory" className={styles.dropdownItem}>
+          <img src="/logo4.png" alt="pic4" className={styles.dropdownIcon} />
+          Our Story
+        </Link>
+        <Link href="/help" className={styles.dropdownItem}>
+          <img src="/logo5.png" alt="pic5" className={styles.dropdownIcon} />
+          Help
+        </Link>
+        <Link href="/" className={styles.dropdownItem}>
+          <img src="/logo6.png" alt="pic6" className={styles.dropdownIcon} />
+          Sign Out
+        </Link>
+      </div>
+    )}
+  </div>
+</header>
+
+
+<div className={`${styles.sidebar} ${isSidebarOpen ? styles.show : ""}`}>
+  <Link href="/dashboard" className={styles.sidebarItem}>
+    <img src="/logo2.1.png" alt="home-icon" className={styles.sidebarIcon} />
+    Home
+  </Link>
+  <Link href="/viewprofile" className={styles.sidebarItem}>
+    <img src="/logo2.2.png" alt="profile-icon" className={styles.sidebarIcon} />
+    Profile
+  </Link>
+</div>
+
+
+
+
+
 
       {/* ===== MAIN CONTENT ===== */}
       <main className={styles.mainContent}>
@@ -123,10 +120,7 @@ export default function DashboardPage() {
         <h1 className={styles.mainTitle}>
           Welcome, to <span className={styles.highlight}>ThePortify</span>!
         </h1>
-        <p className={styles.mainSubtitle}>
-          ThePortify is the portfolio workspace where creators <br />
-          showcase their work in minutes.
-        </p>
+        
       </main>
 
       {/* ===== FEATURE SECTION ===== */}
@@ -207,9 +201,7 @@ export default function DashboardPage() {
 
 
 
-        <p className="feature-quote">
-          "Every project tells a story. Make yours unforgettable."
-        </p>
+        
 
 
         {/* ===== MADING SECTION ===== */}
@@ -219,17 +211,24 @@ export default function DashboardPage() {
             alt="ThePortify Creative Board"
             className={styles.madingImage}
           />
+
+          
         </section>
+        <p className="feature-quote">
+          "Every project tells a story. Make yours unforgettable."
+        </p>
       </section>
 
       {/* ===== FOOTER ===== */}
       <footer className="footer">
         <div className="footer-left">
           <div className="footer-logo">ThePortify</div>
+          <p className="footer-social">"Thank you for visiting ThePortify and taking a moment to discover what were building with passion and purpose"</p>
           <p className="footer-social">
-            Follow us on: Instagram: <b>@theportify</b> &nbsp; | &nbsp; YouTube:{" "}
-            <b>@theportifyoutube</b> ps: blom ada, nanti dibuat &nbsp; | &nbsp;  TikTok: <b>@ThePortify</b>
+            Made with ❤️ by ThePortif Team &nbsp; - &nbsp; © 2025 &nbsp; | &nbsp; All right reserved. &nbsp; | &nbsp; @theportify 
           </p>
+         
+        
         </div>
 
 

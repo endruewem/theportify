@@ -42,11 +42,11 @@ export default function AuthModal({ mode, onClose }) {
               <img src="logogoogle.jpg" alt="Google" />
               Continue with Google
             </button>
-
+          {/*
             <button className="auth-email-btn" onClick={() => setStep(2)}>
               <img src="/logoemail.jpg" alt="Email" />
               Continue with Email
-            </button>
+            </button>*/}
 
             <p className="auth-footer-text">
               {authMode === "login" ? (
@@ -118,6 +118,7 @@ export default function AuthModal({ mode, onClose }) {
         )}
 
         {/* ===== STEP 3: Enter Code ===== */}
+        {/* 
         {step === 3 && (
           <>
             <h2>Check your email inbox</h2>
@@ -127,7 +128,7 @@ export default function AuthModal({ mode, onClose }) {
               Didnt get the code? <span>Resend</span>
             </p>
           </>
-        )}
+        )}*/}
       </div>
     </div>
   );
