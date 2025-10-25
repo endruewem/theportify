@@ -45,7 +45,6 @@
   gap: 10px;
 }
 
-/* ==== SAVE ==== */
 .saveButton {
   background-color: #ffffff;
   color: #000000;
@@ -64,7 +63,6 @@
   color: #ffffff;
 }
 
-/* ==== SAVE AS PDF ==== */
 .pdfButton {
   background-color: #007bff;
   color: #ffffff;
@@ -83,7 +81,6 @@
   color: #007bff;
 }
 
-/* ==== SHARE ==== */
 .shareButton {
   background-color: #007bff;
   color: #ffffff;
@@ -102,19 +99,12 @@
   color: #007bff;
 }
 
-
-
-
-/* ===== MAIN CONTAINER ===== */
-/* ===== MAIN CONTAINER ===== */
-
-
 /* ===== MAIN CONTAINER ===== */
 .mainContainer {
   width: 1083px;
   background-color: rgb(255, 255, 255);
   color: #222;
-   margin: -10px auto 40px auto;
+  margin: -10px auto 40px auto;
   padding: 40px;
   display: flex;
   flex-direction: column;
@@ -129,7 +119,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: stretch; /* ✅ biar tinggi box kanan sejajar sama foto */
+  align-items: stretch;
   gap: 30px;
   width: 100%;
   max-width: 1183px;
@@ -153,14 +143,12 @@
   background-color: #e9f2ff;
 }
 
-/* ===== WRAPPER UNTUK BOX KANAN ===== */
 .infoRightWrapper {
   display: flex;
   flex-direction: column;
   gap: 20px;
   flex: 1;
 }
-
 
 .photoPreview {
   width: 100%;
@@ -180,7 +168,6 @@
   box-sizing: border-box;
 }
 
-/* ===== NAMA / JOB / MOTO ===== */
 .nameInput,
 .jobInput,
 .motoInput {
@@ -191,11 +178,11 @@
   outline: none;
   background: transparent;
   text-align: center;
-  resize: none;              /* 🟢 hilangkan resize manual */
-  overflow: hidden;          /* 🟢 sembunyikan scroll bar */
+  resize: none;
+  overflow: hidden;
   width: 100%;
-  white-space: pre-wrap;     /* 🟢 agar teks membungkus ke bawah */
-  word-wrap: break-word;     /* 🟢 agar teks panjang tidak overflow */
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .nameInput {
@@ -204,22 +191,19 @@
 }
 
 .jobInput {
-  font-size: 25px;
+  font-size: 23px;
   font-weight: 500;
   color: #383838;
   margin-top: 8px;
 }
 
 .motoInput {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 400;
   color: #333;
   margin-top: 12px;
 }
 
-
-
-/* ===== BOX DESKRIPSI ===== */
 .descBox {
   flex: none;
   background-color: #F9F8F7;
@@ -229,12 +213,10 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  min-height: 290px; /* ✅ tinggi awal tetap */
-  height: auto;      /* ✅ bisa membesar kalau teks panjang */
+  min-height: 290px;
+  height: auto;
 }
 
-
-/* ===== DESKRIPSI ===== */
 .descInput {
   font-family: "Inter", sans-serif;
   font-size: 17px;
@@ -250,14 +232,11 @@
   max-width: 700px;
   overflow: hidden;
   height: auto;
-  min-height: 180px; /* ✅ biar ada tinggi default */
+  min-height: 180px;
   box-sizing: border-box;
   transition: height 0.2s ease-out;
 }
 
-
-/* ===== HASHTAG SECTION ===== */
-/* ===== HASHTAG SECTION ===== */
 /* ===== HASHTAG SECTION ===== */
 .hashtagSection {
   margin-top: 24px;
@@ -268,17 +247,16 @@
   padding: 12px 20px;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;       /* ✅ menjaga semua elemen sejajar secara vertikal */
-  align-content: center;     /* ✅ menjaga wrap tetap di tengah */
+  align-items: center;
+  align-content: center;
   justify-content: flex-start;
   gap: 10px;
   box-sizing: border-box;
   overflow: hidden;
-  min-height: 56px;          /* sedikit lebih tinggi biar lega */
-    margin-bottom: -5px;
+  min-height: 56px;
+  margin-bottom: -5px;
 }
 
-/* ===== HASHTAG BUBBLE ===== */
 .hashtag {
   color: #8E8E8E;
   font-size: 17px;
@@ -289,9 +267,9 @@
   white-space: normal;
   overflow-wrap: anywhere;
   max-width: 100%;
+  cursor: pointer;
 }
 
-/* ===== INPUT HASHTAG ===== */
 .hashtagInput {
   border: none;
   outline: none;
@@ -299,18 +277,480 @@
   font-size: 16px;
   color: #333;
   font-family: "Inter", sans-serif;
-  flex-grow: 1;              /* ✅ biar input tetap menyesuaikan ruang */
-  min-width: 100px;          /* ✅ jangan sampai ilang kalau sempit */
+  flex-grow: 1;
+  min-width: 100px;
   max-width: 400px;
   height: 36px;
   box-sizing: border-box;
-  align-self: center;        /* ✅ pastikan sejajar tengah */
+  align-self: center;
 }
 
+/* ===== LIST SECTION ===== */
+.listSection {
+  width: 100%;
+  max-width: 1183px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
+.listTitle {
+  font-size: 25px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  color: #000;
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  padding: 6px 0;
+}
 
+.listBox {
+  background-color: #f9f8f7;
+  border-radius: 13px;
+  padding: 30px 45px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 
+.listItem {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding-bottom: 0px;
+  border-bottom: 2px solid #e5e5e5;
+}
 
+.listItem:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.listItemTitle {
+  font-size: 19px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  color: #383838;
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  padding: 1px 0;
+}
+
+.listItemSubtitle {
+  font-size: 17px;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+  color: #575757;
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  padding: 4px 0;
+}
+
+.listItemDescription {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  color: #575757;
+  line-height: 1.5;
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  resize: none;
+  overflow: hidden;
+  min-height: 60px;
+  margin-bottom: -20px;
+}
+
+.moreButton {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 40px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-self: flex-start;
+  margin-top: 10px;
+}
+
+.moreButton:hover {
+  background-color: #0070e8;
+  transform: translateY(-1px);
+}
+
+/* ===== CARD SECTION ===== */
+.cardSection {
+  width: 100%;
+  max-width: 1183px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cardSectionTitle {
+  font-size: 25px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  color: #000;
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  padding: 6px 0;
+}
+
+/* ===== CARD GRID ===== */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+/* ===== CARD ITEM ===== */
+.cardItem {
+  background-color: #f9f8f7;
+  border-radius: 13px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.cardItem:hover {
+  transform: translateY(-4px);
+}
+
+/* ===== CARD IMAGE WRAPPER ===== */
+.cardImageWrapper {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-color: #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.cardImageWrapper:hover {
+  background-color: #d0d0d0;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== CARD CONTENT ===== */
+.cardTitle {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  color: #000;
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  padding: 16px 20px 8px 20px;
+}
+
+.cardDescription {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  color: #575757;
+  line-height: 1.5;
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  resize: none;
+  overflow: hidden;
+  padding: 0 20px;
+  min-height: 50px;
+}
+
+.viewMoreButton {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 20px 16px 20px;
+  text-align: left;
+  transition: color 0.2s ease;
+}
+
+.viewMoreButton:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* ===== CARD MORE BUTTON ===== */
+.cardMoreButton {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 40px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-self: center;
+  margin-top: 10px;
+}
+
+.cardMoreButton:hover {
+  background-color: #0070e8;
+  transform: translateY(-1px);
+}
+
+/* ===== POPUP OVERLAY ===== */
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+/* ===== POPUP CONTENT ===== */
+.popupContent {
+  width: 1083px;
+  height: 85vh;
+  background-color: #ffffff;
+  border-radius: 16px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== POPUP LEFT (50%) ===== */
+.popupLeft {
+  width: 50%;
+  padding: 40px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+.popupTitle {
+  font-size: 28px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  color: #000;
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  padding: 8px 0;
+  border-bottom: 2px solid #e5e5e5;
+}
+
+.popupDescription {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  color: #575757;
+  line-height: 1.6;
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  resize: none;
+  min-height: 400px;
+  padding: 12px 0;
+}
+
+/* ===== POPUP RIGHT (50%) ===== */
+.popupRight {
+  width: 50%;
+  background-color: #f9f8f7;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* ===== CLOSE BUTTON ===== */
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #666;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.closeButton:hover {
+  background-color: #e5e5e5;
+  color: #000;
+}
+
+/* ===== POPUP IMAGE WRAPPER ===== */
+.popupImageWrapper {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-color: #e5e5e5;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.popupImageWrapper:hover {
+  background-color: #d0d0d0;
+}
+
+.popupImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== POPUP LINKS ===== */
+.popupLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.popupImageTitle {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  color: #000;
+  border: none;
+  outline: none;
+  background: #ffffff;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+}
+
+/* ===== LINK ROW ===== */
+.linkRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.linkInput {
+  flex: 1;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  color: #333;
+  border: none;
+  outline: none;
+  background: #ffffff;
+  padding: 10px 14px;
+  border-radius: 40px;
+}
+
+.copyButton {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 9px 11px;
+  border-radius: 40px;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.copyButton:hover {
+  background-color: #0070e8;
+}
+
+/* ===== ADD LINK BUTTON ===== */
+.addLinkButton {
+  background-color: #ffffff;
+  color: #007bff;
+  border: 2px solid #007bff;
+  padding: 4px 10px;
+  border-radius: 40px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-self: flex-start;
+}
+
+.addLinkButton:hover {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+/* ===== SAVE POPUP BUTTON ===== */
+.savePopupButton {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 40px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-self: flex-end;
+  margin-top: auto;
+}
+
+.savePopupButton:hover {
+  background-color: #0070e8;
+  transform: translateY(-1px);
+}
 
 /* ===== ADD MORE WRAPPER ===== */
 .addMoreWrapper {
@@ -319,16 +759,15 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-top: 80px; /* 🟢 tambah jarak dari hashtag section */
+  margin-top: 80px;
   position: relative;
 }
 
-/* ===== ADD MORE BUTTON ===== */
 .addMoreButton {
   background-color: #007bff;
   color: #ffffff;
   border: none;
-  padding: 10px 24px;
+  padding: 10px 18px;
   border-radius: 40px;
   font-family: "Inter", sans-serif;
   font-size: 16px;
@@ -340,50 +779,238 @@
 
 .addMoreButton:hover {
   background-color: #0070e8;
-  
 }
 
 /* ===== OPTION BOX ===== */
 .optionBox {
   display: flex;
-  gap: 10px;
+  gap: 9px;
   background-color: #ffffff;
   border: 2px solid #007bff;
   border-radius: 40px;
   padding: 6px 6px;
   position: absolute;
   left: 0;
-  transform: translateX(0);
   opacity: 0;
   visibility: hidden;
-  transition: transform 0.35s ease-in-out, opacity 0.15s ease;
-  margin-left: 30px; /* 🟢 jarak lebih dekat ke tombol Add More */
+  transition: all 0.6s ease;
+  margin-left: 140px;
 }
 
-/* ANIMASI MUNCUL SLIDE */
 .optionBox.show {
-  transform: translateX(120px); /* 🟢 animasi geser ke kanan */
   opacity: 1;
   visibility: visible;
+  transform: translateX(0) scale(1);
 }
 
 /* ===== OPTION BUTTONS ===== */
 .optionButton {
   background-color: #007bff;
   border: 2px solid #007bff;
-  padding: 5px 17px;
+  padding: 4px 15px;
   border-radius: 30px;
   font-family: "Inter", sans-serif;
   font-size: 14px;
   font-weight: 500;
   color: #ffffff;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transform: scale(0);
+  transition: transform 0.25s ease;
+}
+
+.optionBox.show .optionButton:nth-child(1) {
+  transform: scale(1);
+  transition-delay: 0.1s;
+}
+
+.optionBox.show .optionButton:nth-child(2) {
+  transform: scale(1);
+  transition-delay: 0.2s;
 }
 
 .optionButton:hover {
-
-  background-color: #e9f2ff;
+  background-color: #ffffff;
   border-color: #007bff;
   color: #007bff;
+  transform: scale(1.05);
+}
+
+/* ===== CONTACT SECTION ===== */
+.contactSection {
+  width: 100%;
+  max-width: 1183px;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contactTitle {
+  font-size: 25px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  color: #000;
+  padding: 6px 0;
+  margin: 0;
+}
+
+.contactBox {
+  background-color: #f9f8f7;
+  border-radius: 13px;
+  padding: 30px 45px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ===== CONTACT ADD WRAPPER ===== */
+.contactAddWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.contactAddButton {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.contactAddButton:hover {
+  background-color: #0070e8;
+  transform: rotate(90deg);
+}
+
+/* ===== LOGO OPTIONS WRAPPER ===== */
+.logoOptionsWrapper {
+  display: flex;
+  gap: 12px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-20px);
+  transition: all 0.4s ease;
+}
+
+.logoOptionsWrapper.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.logoOption {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 2px solid #007bff;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.logoOptionsWrapper.show .logoOption {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.logoOption:hover {
+  background-color: #007bff;
+  transform: scale(1.1);
+}
+
+/* ===== CONTACT LINKS WRAPPER ===== */
+.contactLinksWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+}
+
+.contactIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 2px solid #007bff;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.contactIcon:hover {
+  transform: scale(1.05);
+  background-color: #e9f2ff;
+}
+
+.contactTitleInput,
+.contactLinkInput {
+  flex: 1;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  color: #000;
+  border: none;
+  outline: none;
+  background: #ffffff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.contactTitleInput {
+  font-weight: 600;
+}
+
+.contactLinkInput {
+  color: #666;
+  font-size: 14px;
+}
+
+.contactTitleInput:focus,
+.contactLinkInput:focus {
+  background-color: #e9f2ff;
+  box-shadow: 0 0 0 2px #007bff;
+}
+
+.contactLink {
+  flex: 1;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  color: #007bff;
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  background-color: transparent;
+}
+
+.contactLink:hover {
+  background-color: #e9f2ff;
+  text-decoration: underline;
 }
