@@ -30,6 +30,26 @@ export default function HelpPage() {
     }
   };
 
+const handleAutoResize = (e) => {
+  e.target.style.height = "auto";
+  e.target.style.height = e.target.scrollHeight + "px";
+};
+
+
+const handleRemoveTag = (indexToRemove) => {
+  setHashtags((prevTags) => prevTags.filter((_, idx) => idx !== indexToRemove));
+};
+
+
+const [showOptions, setShowOptions] = useState(false);
+
+const toggleOptions = () => {
+  setShowOptions((prev) => !prev);
+};
+
+
+
+
   return (
     <>
       {/* ===== HEADER ===== */}
@@ -58,7 +78,7 @@ export default function HelpPage() {
       {image ? (
         <img src={image} alt="Preview" className={styles.photoPreview} />
       ) : (
-        <span>+ Upload Foto</span>
+        <span> + Insert Image</span>
       )}
       <input
         type="file"
@@ -71,30 +91,39 @@ export default function HelpPage() {
     {/* === KANAN (INFO + DESKRIPSI DALAM WRAPPER) === */}
     <div className={styles.infoRightWrapper}>
       {/* BOX INFO */}
-      <div className={styles.infoSection}>
-        <input
-          type="text"
-          placeholder="Your Name"
-          className={styles.nameInput}
-        />
-        <input
-          type="text"
-          placeholder="Your Job"
-          className={styles.jobInput}
-        />
-        <input
-          type="text"
-          placeholder="''One sentence describe what you're doing''"
-          className={styles.motoInput}
-        />
-      </div>
+      {/* BOX INFO */}
+<div className={styles.infoSection}>
+  <textarea
+    placeholder="Your Name"
+    className={styles.nameInput}
+    rows={1}
+    onInput={handleAutoResize}
+  />
+  <textarea
+    placeholder="Your Job"
+    className={styles.jobInput}
+    rows={1}
+    onInput={handleAutoResize}
+  />
+  <textarea
+    placeholder="''One sentence describe what you're doing''"
+    className={styles.motoInput}
+    rows={1}
+    onInput={handleAutoResize}
+  />
+</div>
+
+
 
       {/* BOX DESKRIPSI */}
       <div className={styles.descBox}>
         <textarea
-          placeholder="Your description"
-          className={styles.descInput}
-        />
+  placeholder="Your description"
+  className={styles.descInput}
+  rows={1}
+  onInput={handleAutoResize}
+/>
+
       </div>
     </div>
   </div>
@@ -102,10 +131,16 @@ export default function HelpPage() {
   {/* HASHTAG BOX */}
   <div className={styles.hashtagSection}>
     {hashtags.map((tag, idx) => (
-      <div key={idx} className={styles.hashtag}>
-        #{tag}
-      </div>
-    ))}
+  <div
+    key={idx}
+    className={styles.hashtag}
+    onClick={() => handleRemoveTag(idx)}   // 🟢 klik = hapus
+    title="Klik untuk hapus"               // 🟢 tooltip kecil
+  >
+    #{tag}
+  </div>
+))}
+
     <input
       type="text"
       placeholder="Tambah hashtag..."
@@ -115,6 +150,26 @@ export default function HelpPage() {
       className={styles.hashtagInput}
     />
   </div>
+
+
+
+
+
+
+{/* ADD MORE BUTTON */}
+<div className={styles.addMoreWrapper}>
+  <button onClick={toggleOptions} className={styles.addMoreButton}>
+    + Add more
+  </button>
+
+  {/* OPTION BUTTONS (List & Card) */}
+  <div className={`${styles.optionBox} ${showOptions ? styles.show : ""}`}>
+    <button className={styles.optionButton}>List</button>
+    <button className={styles.optionButton}>Card</button>
+  </div>
+</div>
+
+
 </main>
 
     </>

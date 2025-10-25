@@ -112,17 +112,14 @@
 /* ===== MAIN CONTAINER ===== */
 .mainContainer {
   width: 1083px;
-  height: 520px;
-  background-color: #ffffff;
+  background-color: rgb(255, 255, 255);
   color: #222;
-  margin: 60px auto;
+   margin: -10px auto 40px auto;
   padding: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   font-family: "Inter", sans-serif;
- 
   border-radius: 16px;
   box-sizing: border-box;
 }
@@ -160,11 +157,10 @@
 .infoRightWrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* ✅ biar dua box isi penuh tinggi sama foto */
-  height: 500px;
-  flex: 1;
   gap: 20px;
+  flex: 1;
 }
+
 
 .photoPreview {
   width: 100%;
@@ -174,57 +170,51 @@
 
 /* ===== INFO (KANAN) ===== */
 .infoSection {
-  flex: none;
   background-color: #F9F8F7;
   border-radius: 13px;
-  padding: 30px 20px;
+  padding: 30px 45px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  height: 240px; /* ✅ tinggi disesuaikan, separuh kira-kira */
   box-sizing: border-box;
 }
 
-/* ===== NAMA ===== */
-.nameInput {
-font-family: "Inter", sans-serif;
-  font-size: 41px;
-  font-weight: 600;
+/* ===== NAMA / JOB / MOTO ===== */
+.nameInput,
+.jobInput,
+.motoInput {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
   color: #000;
   border: none;
   outline: none;
   background: transparent;
   text-align: center;
+  resize: none;              /* 🟢 hilangkan resize manual */
+  overflow: hidden;          /* 🟢 sembunyikan scroll bar */
   width: 100%;
+  white-space: pre-wrap;     /* 🟢 agar teks membungkus ke bawah */
+  word-wrap: break-word;     /* 🟢 agar teks panjang tidak overflow */
 }
 
-/* ===== PEKERJAAN ===== */
+.nameInput {
+  font-size: 40px;
+  font-weight: 600;
+}
+
 .jobInput {
-    font-family: "Inter", sans-serif;
-  font-size: 26px;
+  font-size: 25px;
   font-weight: 500;
   color: #383838;
-  border: none;
-  outline: none;
-  background: transparent;
   margin-top: 8px;
-  text-align: center;
-  width: 100%;
 }
 
-/* ===== MOTO ===== */
 .motoInput {
-    font-family: "Inter", sans-serif;
-  font-size: 23px;
+  font-size: 22px;
   font-weight: 400;
   color: #333;
-  border: none;
-  outline: none;
-  background: transparent;
   margin-top: 12px;
-  text-align: center;
-  width: 100%;
 }
 
 
@@ -234,20 +224,22 @@ font-family: "Inter", sans-serif;
   flex: none;
   background-color: #F9F8F7;
   border-radius: 13px;
-  padding: 24px 20px;
+  padding: 30px 45px;
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  height: 240px; /* ✅ sisanya biar total 500px bareng infoSection */
+  min-height: 290px; /* ✅ tinggi awal tetap */
+  height: auto;      /* ✅ bisa membesar kalau teks panjang */
 }
+
 
 /* ===== DESKRIPSI ===== */
 .descInput {
   font-family: "Inter", sans-serif;
   font-size: 17px;
   font-weight: 400;
-  color: #374151;
+  color: #575757;
   border: none;
   outline: none;
   background: transparent;
@@ -256,8 +248,13 @@ font-family: "Inter", sans-serif;
   text-align: center;
   width: 100%;
   max-width: 700px;
-  height: 100%;
+  overflow: hidden;
+  height: auto;
+  min-height: 180px; /* ✅ biar ada tinggi default */
+  box-sizing: border-box;
+  transition: height 0.2s ease-out;
 }
+
 
 /* ===== HASHTAG SECTION ===== */
 /* ===== HASHTAG SECTION ===== */
@@ -278,6 +275,7 @@ font-family: "Inter", sans-serif;
   box-sizing: border-box;
   overflow: hidden;
   min-height: 56px;          /* sedikit lebih tinggi biar lega */
+    margin-bottom: -5px;
 }
 
 /* ===== HASHTAG BUBBLE ===== */
@@ -309,3 +307,83 @@ font-family: "Inter", sans-serif;
   align-self: center;        /* ✅ pastikan sejajar tengah */
 }
 
+
+
+
+
+
+/* ===== ADD MORE WRAPPER ===== */
+.addMoreWrapper {
+  width: 100%;
+  max-width: 1183px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 80px; /* 🟢 tambah jarak dari hashtag section */
+  position: relative;
+}
+
+/* ===== ADD MORE BUTTON ===== */
+.addMoreButton {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 40px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  z-index: 2;
+}
+
+.addMoreButton:hover {
+  background-color: #0070e8;
+  
+}
+
+/* ===== OPTION BOX ===== */
+.optionBox {
+  display: flex;
+  gap: 10px;
+  background-color: #ffffff;
+  border: 2px solid #007bff;
+  border-radius: 40px;
+  padding: 6px 6px;
+  position: absolute;
+  left: 0;
+  transform: translateX(0);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.35s ease-in-out, opacity 0.15s ease;
+  margin-left: 30px; /* 🟢 jarak lebih dekat ke tombol Add More */
+}
+
+/* ANIMASI MUNCUL SLIDE */
+.optionBox.show {
+  transform: translateX(120px); /* 🟢 animasi geser ke kanan */
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ===== OPTION BUTTONS ===== */
+.optionButton {
+  background-color: #007bff;
+  border: 2px solid #007bff;
+  padding: 5px 17px;
+  border-radius: 30px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.optionButton:hover {
+
+  background-color: #e9f2ff;
+  border-color: #007bff;
+  color: #007bff;
+}
