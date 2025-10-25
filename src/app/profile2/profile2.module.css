@@ -1,0 +1,311 @@
+.headerCustom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+/* =================== */
+/* KIRI: Logo + Home */
+/* =================== */
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.homeButton {
+  text-decoration: none;
+  color: #000000;
+  border: 3px solid #007bff;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  height: 40px;
+  background-color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.homeButton:hover {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+/* =================== */
+/* KANAN: Tombol-tombol */
+/* =================== */
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ==== SAVE ==== */
+.saveButton {
+  background-color: #ffffff;
+  color: #000000;
+  border: 3px solid #007bff;
+  height: 40px;
+  padding: 6px 16px;
+  border-radius: 40px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.saveButton:hover {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+/* ==== SAVE AS PDF ==== */
+.pdfButton {
+  background-color: #007bff;
+  color: #ffffff;
+  border: 3px solid #007bff;
+  height: 40px;
+  padding: 6px 16px;
+  border-radius: 40px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pdfButton:hover {
+  background-color: #ffffff;
+  color: #007bff;
+}
+
+/* ==== SHARE ==== */
+.shareButton {
+  background-color: #007bff;
+  color: #ffffff;
+  border: 3px solid #007bff;
+  height: 40px;
+  padding: 6px 16px;
+  border-radius: 40px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.shareButton:hover {
+  background-color: #ffffff;
+  color: #007bff;
+}
+
+
+
+
+/* ===== MAIN CONTAINER ===== */
+/* ===== MAIN CONTAINER ===== */
+
+
+/* ===== MAIN CONTAINER ===== */
+.mainContainer {
+  width: 1083px;
+  height: 520px;
+  background-color: #ffffff;
+  color: #222;
+  margin: 60px auto;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+ 
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+/* ===== PROFILE SECTION ===== */
+.profileSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch; /* ✅ biar tinggi box kanan sejajar sama foto */
+  gap: 30px;
+  width: 100%;
+  max-width: 1183px;
+}
+
+/* ===== FOTO ===== */
+.photoWrapper {
+  width: 400px;
+  height: 500px;
+  border-radius: 8px;
+  background-color: #f0f2f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.photoWrapper:hover {
+  background-color: #e9f2ff;
+}
+
+/* ===== WRAPPER UNTUK BOX KANAN ===== */
+.infoRightWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* ✅ biar dua box isi penuh tinggi sama foto */
+  height: 500px;
+  flex: 1;
+  gap: 20px;
+}
+
+.photoPreview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== INFO (KANAN) ===== */
+.infoSection {
+  flex: none;
+  background-color: #F9F8F7;
+  border-radius: 13px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 240px; /* ✅ tinggi disesuaikan, separuh kira-kira */
+  box-sizing: border-box;
+}
+
+/* ===== NAMA ===== */
+.nameInput {
+font-family: "Inter", sans-serif;
+  font-size: 41px;
+  font-weight: 600;
+  color: #000;
+  border: none;
+  outline: none;
+  background: transparent;
+  text-align: center;
+  width: 100%;
+}
+
+/* ===== PEKERJAAN ===== */
+.jobInput {
+    font-family: "Inter", sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: #383838;
+  border: none;
+  outline: none;
+  background: transparent;
+  margin-top: 8px;
+  text-align: center;
+  width: 100%;
+}
+
+/* ===== MOTO ===== */
+.motoInput {
+    font-family: "Inter", sans-serif;
+  font-size: 23px;
+  font-weight: 400;
+  color: #333;
+  border: none;
+  outline: none;
+  background: transparent;
+  margin-top: 12px;
+  text-align: center;
+  width: 100%;
+}
+
+
+
+/* ===== BOX DESKRIPSI ===== */
+.descBox {
+  flex: none;
+  background-color: #F9F8F7;
+  border-radius: 13px;
+  padding: 24px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 240px; /* ✅ sisanya biar total 500px bareng infoSection */
+}
+
+/* ===== DESKRIPSI ===== */
+.descInput {
+  font-family: "Inter", sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: #374151;
+  border: none;
+  outline: none;
+  background: transparent;
+  line-height: 1.6;
+  resize: none;
+  text-align: center;
+  width: 100%;
+  max-width: 700px;
+  height: 100%;
+}
+
+/* ===== HASHTAG SECTION ===== */
+/* ===== HASHTAG SECTION ===== */
+/* ===== HASHTAG SECTION ===== */
+.hashtagSection {
+  margin-top: 24px;
+  width: 100%;
+  max-width: 1183px;
+  background-color: #F9F8F7;
+  border-radius: 13px;
+  padding: 12px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;       /* ✅ menjaga semua elemen sejajar secara vertikal */
+  align-content: center;     /* ✅ menjaga wrap tetap di tengah */
+  justify-content: flex-start;
+  gap: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+  min-height: 56px;          /* sedikit lebih tinggi biar lega */
+}
+
+/* ===== HASHTAG BUBBLE ===== */
+.hashtag {
+  color: #8E8E8E;
+  font-size: 17px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  background-color: transparent;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+
+/* ===== INPUT HASHTAG ===== */
+.hashtagInput {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  color: #333;
+  font-family: "Inter", sans-serif;
+  flex-grow: 1;              /* ✅ biar input tetap menyesuaikan ruang */
+  min-width: 100px;          /* ✅ jangan sampai ilang kalau sempit */
+  max-width: 400px;
+  height: 36px;
+  box-sizing: border-box;
+  align-self: center;        /* ✅ pastikan sejajar tengah */
+}
+

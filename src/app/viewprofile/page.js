@@ -49,11 +49,11 @@ export default function HelpPage() {
           {isDropdownOpen && (
             <div className={dashboardStyles.dropdownMenu}>
               <Link href="/viewprofile" className={dashboardStyles.dropdownItem}>
-                <img src="/logo1.png" alt="pic1" className={dashboardStyles.dropdownIcon} />
+                <img src="/logo1.jpg" alt="pic1" className={dashboardStyles.dropdownIcon} />
                 View Profile
               </Link>
               <Link href="/dashboard" className={dashboardStyles.dropdownItem}>
-                <img src="/logo2.png" alt="pic2" className={dashboardStyles.dropdownIcon} />
+                <img src="/logo2.jpg" alt="pic2" className={dashboardStyles.dropdownIcon} />
                 Home
               </Link>
               <Link href="/settings" className={dashboardStyles.dropdownItem}>
@@ -65,7 +65,7 @@ export default function HelpPage() {
                 Our Story
               </Link>
               <Link href="/help" className={dashboardStyles.dropdownItem}>
-                <img src="/logo5.png" alt="pic5" className={dashboardStyles.dropdownIcon} />
+                <img src="/logo5.jpg" alt="pic5" className={dashboardStyles.dropdownIcon} />
                 Help
               </Link>
               <Link href="/" className={dashboardStyles.dropdownItem}>

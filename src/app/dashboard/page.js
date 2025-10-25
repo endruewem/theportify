@@ -50,11 +50,11 @@ export default function DashboardPage() {
     {isDropdownOpen && (
       <div className={styles.dropdownMenu}>
         <Link href="/viewprofile" className={styles.dropdownItem}>
-          <img src="/logo1.png" alt="pic1" className={styles.dropdownIcon} />
+          <img src="/logo1.jpg" alt="pic1" className={styles.dropdownIcon} />
           View Profile
         </Link>
         <Link href="/dashboard" className={styles.dropdownItem}>
-          <img src="/logo2.png" alt="pic2" className={styles.dropdownIcon} />
+          <img src="/logo2.jpg" alt="pic2" className={styles.dropdownIcon} />
           Home
         </Link>
         <Link href="/settings" className={styles.dropdownItem}>
@@ -66,7 +66,7 @@ export default function DashboardPage() {
           Our Story
         </Link>
         <Link href="/help" className={styles.dropdownItem}>
-          <img src="/logo5.png" alt="pic5" className={styles.dropdownIcon} />
+          <img src="/logo5.jpg" alt="pic5" className={styles.dropdownIcon} />
           Help
         </Link>
         <Link href="/" className={styles.dropdownItem}>
@@ -113,13 +113,14 @@ export default function DashboardPage() {
           />
         </div>
 
-        <Link href="/profile">
+        <Link href="/profile2">
           <button className={styles.btnPrimary}>My Profile</button>
         </Link>
 
         <h1 className={styles.mainTitle}>
           Welcome, to <span className={styles.highlight}>ThePortify</span>!
         </h1>
+        <p>Show, dont tell</p>
         
       </main>
 

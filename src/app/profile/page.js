@@ -124,7 +124,10 @@ export default function ProfilePage() {
           >
             Home
           </button>
+          
         </div>
+        <button className={styles.saveBtn}>Save</button>
+        <button className={styles.pdfBtn}>Save as PDF</button>
         <button className={styles.shareBtn}>Share Profile</button>
       </header>
 
