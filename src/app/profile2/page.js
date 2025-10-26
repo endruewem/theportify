@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import styles from "./profile2.module.css";
 import dashboardStyles from "../dashboard/dashboard.module.css";
@@ -11,8 +11,8 @@ export default function HelpPage() {
   const [hashtags, setHashtags] = useState([]);
   const [hashtagInput, setHashtagInput] = useState("");
   const [showOptions, setShowOptions] = useState(false);
-  const [listSections, setListSections] = useState([]);
-  const [cardSections, setCardSections] = useState([]);
+  const [sections, setSections] = useState([]);
+  const [mounted, setMounted] = useState(false);
   
   // ===== POPUP STATE =====
   const [showPopup, setShowPopup] = useState(false);
@@ -24,16 +24,25 @@ export default function HelpPage() {
   const [showLogoOptions, setShowLogoOptions] = useState(false);
   const [editingContact, setEditingContact] = useState(null);
 
-  // ===== LOGO OPTIONS =====
+  // ===== DRAG STATE =====
+  const [draggedSection, setDraggedSection] = useState(null);
+  const [dragOverSection, setDragOverSection] = useState(null);
+
+  // Fix hydration error
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // ===== LOGO OPTIONS - CHANGE YOUR IMAGES HERE =====
   const logoOptions = [
-    { id: "email", name: "Email", icon: "📧" },
-    { id: "linkedin", name: "LinkedIn", icon: "💼" },
-    { id: "github", name: "GitHub", icon: "🐙" },
-    { id: "twitter", name: "Twitter", icon: "🐦" },
-    { id: "instagram", name: "Instagram", icon: "📷" },
-    { id: "facebook", name: "Facebook", icon: "📘" },
-    { id: "whatsapp", name: "WhatsApp", icon: "💬" },
-    { id: "website", name: "Website", icon: "🌐" },
+    { id: "email", name: "Email", icon: "📧", isEmail: true },
+    { id: "linkedin", name: "LinkedIn", icon: "/logolinkedin.png" }, // Change filename here
+    { id: "github", name: "GitHub", icon: "/logogithub.png" }, // Change filename here
+    { id: "twitter", name: "Twitter", icon: "/linkedin.jpg" }, // Change filename here
+    { id: "instagram", name: "Instagram", icon: "/github.jpg" }, // Your instagram logo here
+    { id: "facebook", name: "Facebook", icon: "/medium.jpg" }, // Change filename here
+    { id: "whatsapp", name: "WhatsApp", icon: "/ig.jpg" }, // Change filename here
+    { id: "website", name: "Website", icon: "/yutub.jpg" }, // Change filename here
   ];
 
   // ===== HANDLE FOTO =====
@@ -52,7 +61,7 @@ export default function HelpPage() {
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
-        setCardSections((prevSections) =>
+        setSections((prevSections) =>
           prevSections.map((section) =>
             section.id === sectionId
               ? {
@@ -87,11 +96,21 @@ export default function HelpPage() {
     e.target.style.height = e.target.scrollHeight + "px";
   };
 
-  // ===== HASHTAG =====
+  // ===== HASHTAG - FIXED WITH LIMIT =====
   const handleHashtagKeyDown = (e) => {
-    if (e.key === "Enter" && hashtagInput.trim() !== "") {
+    if ((e.key === "Enter" || e.key === " ") && hashtagInput.trim() !== "") {
       e.preventDefault();
       const newTag = hashtagInput.trim();
+      
+      // Check if hashtag box would overflow
+      const tempHashtags = [...hashtags, newTag];
+      const estimatedWidth = tempHashtags.reduce((acc, tag) => acc + tag.length * 10 + 40, 0);
+      
+      if (estimatedWidth > 1100) {
+        alert("Hashtag box is full! Remove some hashtags to add more.");
+        return;
+      }
+      
       if (!hashtags.includes(newTag)) {
         setHashtags((prev) => [...prev, newTag]);
       }
@@ -116,13 +135,13 @@ export default function HelpPage() {
       title: "",
       items: [{ title: "", subtitle: "", description: "" }],
     };
-    setListSections((prev) => [...prev, newSection]);
+    setSections((prev) => [...prev, newSection]);
     setShowOptions(false);
   };
 
   // ===== TAMBAH ITEM DALAM LIST =====
   const handleAddListItem = (sectionId) => {
-    setListSections((prevSections) =>
+    setSections((prevSections) =>
       prevSections.map((section) =>
         section.id === sectionId
           ? {
@@ -136,7 +155,7 @@ export default function HelpPage() {
 
   // ===== UPDATE ISI ITEM LIST =====
   const handleItemChange = (sectionId, itemIndex, field, value) => {
-    setListSections((prevSections) =>
+    setSections((prevSections) =>
       prevSections.map((section) =>
         section.id === sectionId
           ? {
@@ -152,7 +171,7 @@ export default function HelpPage() {
 
   // ===== UPDATE JUDUL LIST SECTION =====
   const handleListTitleChange = (sectionId, value) => {
-    setListSections((prevSections) =>
+    setSections((prevSections) =>
       prevSections.map((section) =>
         section.id === sectionId ? { ...section, title: value } : section
       )
@@ -167,13 +186,13 @@ export default function HelpPage() {
       title: "",
       cards: [],
     };
-    setCardSections((prev) => [...prev, newSection]);
+    setSections((prev) => [...prev, newSection]);
     setShowOptions(false);
   };
 
   // ===== TAMBAH CARD BARU =====
   const handleAddCard = (sectionId) => {
-    setCardSections((prevSections) =>
+    setSections((prevSections) =>
       prevSections.map((section) =>
         section.id === sectionId
           ? {
@@ -198,7 +217,7 @@ export default function HelpPage() {
 
   // ===== UPDATE CARD TITLE & DESC (PREVIEW) =====
   const handleCardChange = (sectionId, cardIndex, field, value) => {
-    setCardSections((prevSections) =>
+    setSections((prevSections) =>
       prevSections.map((section) =>
         section.id === sectionId
           ? {
@@ -214,16 +233,60 @@ export default function HelpPage() {
 
   // ===== UPDATE CARD SECTION TITLE =====
   const handleCardTitleChange = (sectionId, value) => {
-    setCardSections((prevSections) =>
+    setSections((prevSections) =>
       prevSections.map((section) =>
         section.id === sectionId ? { ...section, title: value } : section
       )
     );
   };
 
+  // ===== DRAG AND DROP HANDLERS =====
+  const handleDragStart = (e, sectionId) => {
+    setDraggedSection(sectionId);
+    e.dataTransfer.effectAllowed = "move";
+  };
+
+  const handleDragOver = (e, sectionId) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
+    if (draggedSection !== sectionId) {
+      setDragOverSection(sectionId);
+    }
+  };
+
+  const handleDragLeave = () => {
+    setDragOverSection(null);
+  };
+
+  const handleDrop = (e, targetSectionId) => {
+    e.preventDefault();
+    
+    if (draggedSection === targetSectionId) {
+      setDraggedSection(null);
+      setDragOverSection(null);
+      return;
+    }
+
+    const draggedIndex = sections.findIndex(s => s.id === draggedSection);
+    const targetIndex = sections.findIndex(s => s.id === targetSectionId);
+
+    const newSections = [...sections];
+    const [removed] = newSections.splice(draggedIndex, 1);
+    newSections.splice(targetIndex, 0, removed);
+
+    setSections(newSections);
+    setDraggedSection(null);
+    setDragOverSection(null);
+  };
+
+  const handleDragEnd = () => {
+    setDraggedSection(null);
+    setDragOverSection(null);
+  };
+
   // ===== OPEN POPUP =====
   const handleOpenPopup = (sectionId, cardIndex) => {
-    const section = cardSections.find((s) => s.id === sectionId);
+    const section = sections.find((s) => s.id === sectionId);
     const card = section.cards[cardIndex];
     setEditingCard({ sectionId, cardIndex });
     setPopupData({ ...card });
@@ -240,7 +303,7 @@ export default function HelpPage() {
   // ===== SAVE POPUP =====
   const handleSavePopup = () => {
     if (editingCard) {
-      setCardSections((prevSections) =>
+      setSections((prevSections) =>
         prevSections.map((section) =>
           section.id === editingCard.sectionId
             ? {
@@ -293,6 +356,7 @@ export default function HelpPage() {
       name: logo.name,
       title: "",
       link: "",
+      isEmail: logo.isEmail || false,
     };
     setContactLinks((prev) => [...prev, newContact]);
     setShowLogoOptions(false);
@@ -307,22 +371,37 @@ export default function HelpPage() {
     );
   };
 
-  const handleContactBlur = (id) => {
+  // ===== FIXED: Contact blur - only exit edit mode if title is filled =====
+  const handleContactBlur = (id, field) => {
     const contact = contactLinks.find((c) => c.id === id);
-    if (contact && contact.title && contact.link) {
-      setEditingContact(null);
+    
+    // Only exit editing if title is filled (link is optional for non-email)
+    if (contact && contact.title && contact.title.trim() !== "") {
+      // For email, only title is required
+      if (contact.isEmail) {
+        setEditingContact(null);
+      } else {
+        // For others, check if we're leaving the last input field
+        if (field === 'link') {
+          setEditingContact(null);
+        }
+      }
     }
   };
 
-  const handleContactKeyDown = (e, id) => {
+  const handleContactKeyDown = (e, id, field) => {
     if (e.key === "Enter") {
-      handleContactBlur(id);
+      handleContactBlur(id, field);
     }
   };
 
   const handleEditContact = (id) => {
     setEditingContact(id);
   };
+
+  if (!mounted) {
+    return null; // Prevent hydration mismatch
+  }
 
   return (
     <>
@@ -336,9 +415,9 @@ export default function HelpPage() {
         </div>
 
         <div className={styles.rightSection}>
-          <button className={styles.saveButton}>Save</button>
-          <button className={styles.pdfButton}>Save as PDF</button>
-          <button className={styles.shareButton}>Share</button>
+          <button className={styles.saveButton} type="button">Save</button>
+          <button className={styles.pdfButton} type="button">Save as PDF</button>
+          <button className={styles.shareButton} type="button">Share</button>
         </div>
       </header>
 
@@ -369,73 +448,154 @@ export default function HelpPage() {
           </div>
         </div>
 
-        {/* HASHTAGS */}
+        {/* HASHTAGS - JUSTIFIED WITH LIMIT */}
         <div className={styles.hashtagSection}>
           {hashtags.map((tag, idx) => (
-            <div key={idx} className={styles.hashtag} onClick={() => handleRemoveTag(idx)} title="Klik untuk hapus">
+            <div key={idx} className={styles.hashtag} onClick={() => handleRemoveTag(idx)} title="Click to remove">
               #{tag}
             </div>
           ))}
-          <input type="text" placeholder="Tambah hashtag..." value={hashtagInput} onChange={(e) => setHashtagInput(e.target.value)} onKeyDown={handleHashtagKeyDown} className={styles.hashtagInput} />
+          <input 
+            type="text" 
+            placeholder="Add hashtag..." 
+            value={hashtagInput} 
+            onChange={(e) => setHashtagInput(e.target.value)} 
+            onKeyDown={handleHashtagKeyDown} 
+            className={styles.hashtagInput} 
+          />
         </div>
 
-        {/* ===== LIST SECTIONS ===== */}
-        {listSections.map((section) => (
-          <div key={section.id} className={styles.listSection}>
-            <input type="text" placeholder="List Title (e.g., Work Experience)" value={section.title} onChange={(e) => handleListTitleChange(section.id, e.target.value)} className={styles.listTitle} />
-            <div className={styles.listBox}>
-              {section.items.map((item, itemIndex) => (
-                <div key={itemIndex} className={styles.listItem}>
-                  <input type="text" placeholder="Title (Ex. Company | Location)" value={item.title} onChange={(e) => handleItemChange(section.id, itemIndex, "title", e.target.value)} className={styles.listItemTitle} />
-                  <input type="text" placeholder="Role & Date (Ex. Frontend Dev Intern (Jan - Jun 2024))" value={item.subtitle} onChange={(e) => handleItemChange(section.id, itemIndex, "subtitle", e.target.value)} className={styles.listItemSubtitle} />
-                  <textarea placeholder="Description role" value={item.description} onChange={(e) => handleItemChange(section.id, itemIndex, "description", e.target.value)} onInput={handleAutoResize} className={styles.listItemDescription} rows={1} />
-                </div>
-              ))}
-              <button onClick={() => handleAddListItem(section.id)} className={styles.moreButton}>
-                + More
-              </button>
+        {/* ===== COMBINED LIST AND CARD SECTIONS - DRAGGABLE ===== */}
+        {sections.map((section) => (
+          <div
+            key={section.id}
+            draggable
+            onDragStart={(e) => handleDragStart(e, section.id)}
+            onDragOver={(e) => handleDragOver(e, section.id)}
+            onDragLeave={handleDragLeave}
+            onDrop={(e) => handleDrop(e, section.id)}
+            onDragEnd={handleDragEnd}
+            className={`${section.type === "list" ? styles.listSection : styles.cardSection} ${
+              dragOverSection === section.id ? styles.dragOver : ""
+            }`}
+          >
+            <div className={styles.sectionHeader}>
+              <span className={styles.dragHandle}>⠿</span>
+              <input
+                type="text"
+                placeholder={section.type === "list" ? "List Title (e.g., Work Experience)" : "Card Title (e.g., Projects)"}
+                value={section.title}
+                onChange={(e) =>
+                  section.type === "list"
+                    ? handleListTitleChange(section.id, e.target.value)
+                    : handleCardTitleChange(section.id, e.target.value)
+                }
+                className={section.type === "list" ? styles.listTitle : styles.cardSectionTitle}
+              />
             </div>
+
+            {section.type === "list" ? (
+              <div className={styles.listBox}>
+                {section.items.map((item, itemIndex) => (
+                  <div key={itemIndex} className={styles.listItem}>
+                    <input
+                      type="text"
+                      placeholder="Title (Ex. Company | Location)"
+                      value={item.title}
+                      onChange={(e) => handleItemChange(section.id, itemIndex, "title", e.target.value)}
+                      className={styles.listItemTitle}
+                    />
+                    <input
+                      type="text"
+                      placeholder="Role & Date (Ex. Frontend Dev Intern (Jan - Jun 2024))"
+                      value={item.subtitle}
+                      onChange={(e) => handleItemChange(section.id, itemIndex, "subtitle", e.target.value)}
+                      className={styles.listItemSubtitle}
+                    />
+                    <textarea
+                      placeholder="Description role"
+                      value={item.description}
+                      onChange={(e) => handleItemChange(section.id, itemIndex, "description", e.target.value)}
+                      onInput={handleAutoResize}
+                      className={styles.listItemDescription}
+                      rows={1}
+                    />
+                  </div>
+                ))}
+                <button onClick={() => handleAddListItem(section.id)} className={styles.moreButton} type="button">
+                  + More
+                </button>
+              </div>
+            ) : (
+              <>
+                <div className={styles.cardGrid}>
+                  {section.cards.map((card, cardIndex) => (
+                    <div key={card.id} className={styles.cardItem}>
+                      <label className={styles.cardImageWrapper}>
+                        {card.image ? (
+                          <img src={card.image} alt="Card" className={styles.cardImage} />
+                        ) : (
+                          <span>+ Insert Image 16:9</span>
+                        )}
+                        <input
+                          type="file"
+                          accept="image/*"
+                          style={{ display: "none" }}
+                          onChange={(e) => handleCardImageUpload(e, section.id, cardIndex)}
+                        />
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Title"
+                        value={card.title}
+                        onChange={(e) => handleCardChange(section.id, cardIndex, "title", e.target.value)}
+                        className={styles.cardTitle}
+                      />
+                      <textarea
+                        placeholder="Short description..."
+                        value={card.description}
+                        onChange={(e) => handleCardChange(section.id, cardIndex, "description", e.target.value)}
+                        onInput={handleAutoResize}
+                        className={styles.cardDescription}
+                        rows={2}
+                      />
+                      <button onClick={() => handleOpenPopup(section.id, cardIndex)} className={styles.viewMoreButton} type="button">
+                        [view more]
+                      </button>
+                    </div>
+                  ))}
+                </div>
+
+                <button onClick={() => handleAddCard(section.id)} className={styles.cardMoreButton} type="button">
+                  + More
+                </button>
+              </>
+            )}
           </div>
         ))}
 
-        {/* ===== CARD SECTIONS ===== */}
-        {cardSections.map((section) => (
-          <div key={section.id} className={styles.cardSection}>
-            <input type="text" placeholder="Card Title (e.g., Projects)" value={section.title} onChange={(e) => handleCardTitleChange(section.id, e.target.value)} className={styles.cardSectionTitle} />
-            
-            <div className={styles.cardGrid}>
-              {section.cards.map((card, cardIndex) => (
-                <div key={card.id} className={styles.cardItem}>
-                  <label className={styles.cardImageWrapper}>
-                    {card.image ? (
-                      <img src={card.image} alt="Card" className={styles.cardImage} />
-                    ) : (
-                      <span>+ Insert Image 16:9</span>
-                    )}
-                    <input type="file" accept="image/*" style={{ display: "none" }} onChange={(e) => handleCardImageUpload(e, section.id, cardIndex)} />
-                  </label>
-                  <input type="text" placeholder="Title" value={card.title} onChange={(e) => handleCardChange(section.id, cardIndex, "title", e.target.value)} className={styles.cardTitle} />
-                  <textarea placeholder="Short description..." value={card.description} onChange={(e) => handleCardChange(section.id, cardIndex, "description", e.target.value)} onInput={handleAutoResize} className={styles.cardDescription} rows={2} />
-                  <button onClick={() => handleOpenPopup(section.id, cardIndex)} className={styles.viewMoreButton}>
-                    [view more]
-                  </button>
-                </div>
-              ))}
-            </div>
-
-            <button onClick={() => handleAddCard(section.id)} className={styles.cardMoreButton}>
-              + More
+        {/* ADD MORE BUTTON - ABOVE CONTACT */}
+        <div className={styles.addMoreWrapper}>
+          <button onClick={toggleOptions} className={styles.addMoreButton} type="button">
+            + Add more
+          </button>
+          <div className={`${styles.optionBox} ${showOptions ? styles.show : ""}`}>
+            <button onClick={handleAddListSection} className={styles.optionButton} type="button">
+              List
+            </button>
+            <button onClick={handleAddCardSection} className={styles.optionButton} type="button">
+              Card
             </button>
           </div>
-        ))}
+        </div>
 
-        {/* ===== CONTACT SECTION ===== */}
+        {/* ===== CONTACT SECTION - MANDATORY AT BOTTOM ===== */}
         <div className={styles.contactSection}>
-          <h2 className={styles.contactTitle}>Contact</h2>
+          <h2 className={styles.contactTitle}>My Contact</h2>
           <div className={styles.contactBox}>
             {/* ADD BUTTON */}
             <div className={styles.contactAddWrapper}>
-              <button onClick={toggleLogoOptions} className={styles.contactAddButton}>
+              <button onClick={toggleLogoOptions} className={styles.contactAddButton} type="button">
                 +
               </button>
 
@@ -448,8 +608,9 @@ export default function HelpPage() {
                     className={styles.logoOption}
                     style={{ transitionDelay: `${idx * 0.05}s` }}
                     title={logo.name}
+                    type="button"
                   >
-                    {logo.icon}
+                    {logo.isEmail ? logo.icon : <img src={logo.icon} alt={logo.name} className={styles.logoImage} />}
                   </button>
                 ))}
               </div>
@@ -461,26 +622,30 @@ export default function HelpPage() {
                 <div key={contact.id} className={styles.contactItem}>
                   {editingContact === contact.id ? (
                     <>
-                      <div className={styles.contactIcon}>{contact.icon}</div>
+                      <div className={styles.contactIcon}>
+                        {contact.isEmail ? contact.icon : <img src={contact.icon} alt={contact.name} className={styles.logoImage} />}
+                      </div>
                       <input
                         type="text"
-                        placeholder="Title (e.g., Email Me)"
+                        placeholder={contact.isEmail ? "Email Address" : "Your Contact Name"}
                         value={contact.title}
                         onChange={(e) => handleContactChange(contact.id, "title", e.target.value)}
-                        onBlur={() => handleContactBlur(contact.id)}
-                        onKeyDown={(e) => handleContactKeyDown(e, contact.id)}
+                        onBlur={() => handleContactBlur(contact.id, 'title')}
+                        onKeyDown={(e) => handleContactKeyDown(e, contact.id, 'title')}
                         className={styles.contactTitleInput}
                         autoFocus
                       />
-                      <input
-                        type="text"
-                        placeholder="Link (e.g., mailto:you@email.com)"
-                        value={contact.link}
-                        onChange={(e) => handleContactChange(contact.id, "link", e.target.value)}
-                        onBlur={() => handleContactBlur(contact.id)}
-                        onKeyDown={(e) => handleContactKeyDown(e, contact.id)}
-                        className={styles.contactLinkInput}
-                      />
+                      {!contact.isEmail && (
+                        <input
+                          type="text"
+                          placeholder="Link (e.g., https://linkedin.com/in/yourname)"
+                          value={contact.link}
+                          onChange={(e) => handleContactChange(contact.id, "link", e.target.value)}
+                          onBlur={() => handleContactBlur(contact.id, 'link')}
+                          onKeyDown={(e) => handleContactKeyDown(e, contact.id, 'link')}
+                          className={styles.contactLinkInput}
+                        />
+                      )}
                     </>
                   ) : (
                     <>
@@ -489,16 +654,20 @@ export default function HelpPage() {
                         onClick={() => handleEditContact(contact.id)}
                         style={{ cursor: 'pointer' }}
                       >
-                        {contact.icon}
+                        {contact.isEmail ? contact.icon : <img src={contact.icon} alt={contact.name} className={styles.logoImage} />}
                       </div>
-                      <a
-                        href={contact.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.contactLink}
-                      >
-                        {contact.title || contact.name}
-                      </a>
+                      {contact.isEmail ? (
+                        <span className={styles.contactEmailText}>{contact.title}</span>
+                      ) : (
+                        <a
+                          href={contact.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.contactLink}
+                        >
+                          {contact.title || contact.name}
+                        </a>
+                      )}
                     </>
                   )}
                 </div>
@@ -506,36 +675,33 @@ export default function HelpPage() {
             </div>
           </div>
         </div>
-
-        {/* ADD MORE BUTTON */}
-        <div className={styles.addMoreWrapper}>
-          <button onClick={toggleOptions} className={styles.addMoreButton}>
-            + Add more
-          </button>
-          <div className={`${styles.optionBox} ${showOptions ? styles.show : ""}`}>
-            <button onClick={handleAddListSection} className={styles.optionButton}>
-              List
-            </button>
-            <button onClick={handleAddCardSection} className={styles.optionButton}>
-              Card
-            </button>
-          </div>
-        </div>
       </main>
 
-      {/* ===== POPUP EDITOR ===== */}
+      {/* ===== POPUP EDITOR - LEFT SIDE SCROLLABLE ===== */}
       {showPopup && popupData && (
         <div className={styles.popupOverlay} onClick={handleClosePopup}>
           <div className={styles.popupContent} onClick={(e) => e.stopPropagation()}>
-            {/* LEFT SIDE */}
+            {/* LEFT SIDE - SCROLLABLE */}
             <div className={styles.popupLeft}>
-              <input type="text" placeholder="Project Title" value={popupData.fullTitle} onChange={(e) => setPopupData({ ...popupData, fullTitle: e.target.value })} className={styles.popupTitle} />
-              <textarea placeholder="Full project description..." value={popupData.fullDescription} onChange={(e) => setPopupData({ ...popupData, fullDescription: e.target.value })} className={styles.popupDescription} />
+              <textarea
+                placeholder="Project Title"
+                value={popupData.fullTitle}
+                onChange={(e) => setPopupData({ ...popupData, fullTitle: e.target.value })}
+                onInput={handleAutoResize}
+                className={styles.popupTitle}
+                rows={1}
+              />
+              <textarea
+                placeholder="Full project description..."
+                value={popupData.fullDescription}
+                onChange={(e) => setPopupData({ ...popupData, fullDescription: e.target.value })}
+                className={styles.popupDescription}
+              />
             </div>
 
             {/* RIGHT SIDE */}
             <div className={styles.popupRight}>
-              <button className={styles.closeButton} onClick={handleClosePopup}>
+              <button className={styles.closeButton} onClick={handleClosePopup} type="button">
                 ✕
               </button>
 
@@ -549,23 +715,35 @@ export default function HelpPage() {
               </label>
 
               <div className={styles.popupLinks}>
-                <input type="text" placeholder="Image Title" value={popupData.title} onChange={(e) => setPopupData({ ...popupData, title: e.target.value })} className={styles.popupImageTitle} />
+                <input
+                  type="text"
+                  placeholder="Image Title"
+                  value={popupData.title}
+                  onChange={(e) => setPopupData({ ...popupData, title: e.target.value })}
+                  className={styles.popupImageTitle}
+                />
                 
                 {popupData.links.map((link, idx) => (
                   <div key={idx} className={styles.linkRow}>
-                    <input type="text" placeholder="Link text" value={link.text} onChange={(e) => handleLinkChange(idx, "text", e.target.value)} className={styles.linkInput} />
-                    <button onClick={() => handleCopyText(link.text)} className={styles.copyButton}>
+                    <input
+                      type="text"
+                      placeholder="Link text"
+                      value={link.text}
+                      onChange={(e) => handleLinkChange(idx, "text", e.target.value)}
+                      className={styles.linkInput}
+                    />
+                    <button onClick={() => handleCopyText(link.text)} className={styles.copyButton} type="button">
                       Copy
                     </button>
                   </div>
                 ))}
 
-                <button onClick={handleAddLink} className={styles.addLinkButton}>
+                <button onClick={handleAddLink} className={styles.addLinkButton} type="button">
                   + Add Link
                 </button>
               </div>
 
-              <button onClick={handleSavePopup} className={styles.savePopupButton}>
+              <button onClick={handleSavePopup} className={styles.savePopupButton} type="button">
                 Save
               </button>
             </div>

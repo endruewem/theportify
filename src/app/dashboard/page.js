@@ -40,7 +40,7 @@ export default function DashboardPage() {
     </div>
 
     <div className={styles.headerLogo}>
-      ThePortify<span className={styles.demoTag}>(demo V1.5)</span>
+      ThePortify<span className={styles.demoTag}>(demo V1.9)</span>
     </div>
   </div>
 
@@ -50,7 +50,7 @@ export default function DashboardPage() {
     {isDropdownOpen && (
       <div className={styles.dropdownMenu}>
         <Link href="/viewprofile" className={styles.dropdownItem}>
-          <img src="/logo1.jpg" alt="pic1" className={styles.dropdownIcon} />
+          <img src="/potomata.jpg" alt="pic1" className={styles.dropdownIcon} />
           View Profile
         </Link>
         <Link href="/dashboard" className={styles.dropdownItem}>
@@ -62,7 +62,7 @@ export default function DashboardPage() {
           Settings
         </Link>
         <Link href="/ourstory" className={styles.dropdownItem}>
-          <img src="/logo4.png" alt="pic4" className={styles.dropdownIcon} />
+          <img src="/logokopi.jpg" alt="pic4" className={styles.dropdownIcon} />
           Our Story
         </Link>
         <Link href="/help" className={styles.dropdownItem}>
@@ -81,11 +81,11 @@ export default function DashboardPage() {
 
 <div className={`${styles.sidebar} ${isSidebarOpen ? styles.show : ""}`}>
   <Link href="/dashboard" className={styles.sidebarItem}>
-    <img src="/logo2.1.png" alt="home-icon" className={styles.sidebarIcon} />
+    <img src="/logo2.1.jpg" alt="home-icon" className={styles.sidebarIcon} />
     Home
   </Link>
   <Link href="/viewprofile" className={styles.sidebarItem}>
-    <img src="/logo2.2.png" alt="profile-icon" className={styles.sidebarIcon} />
+    <img src="/logo2.2.jpg" alt="profile-icon" className={styles.sidebarIcon} />
     Profile
   </Link>
 </div>
