@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -28,22 +29,89 @@ export default function HelpPage() {
   const [draggedSection, setDraggedSection] = useState(null);
   const [dragOverSection, setDragOverSection] = useState(null);
 
+  // ===== CONTEXT MENU STATE =====
+  const [contextMenu, setContextMenu] = useState({
+    show: false,
+    x: 0,
+    y: 0,
+    type: null, // 'section', 'listItem', 'card', 'contact'
+    data: null
+  });
+
   // Fix hydration error
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // ===== LOGO OPTIONS - CHANGE YOUR IMAGES HERE =====
+  // Close context menu when clicking anywhere
+  useEffect(() => {
+    const handleClick = () => setContextMenu({ show: false, x: 0, y: 0, type: null, data: null });
+    document.addEventListener('click', handleClick);
+    return () => document.removeEventListener('click', handleClick);
+  }, []);
+
+  // ===== LOGO OPTIONS =====
   const logoOptions = [
     { id: "email", name: "Email", icon: "📧", isEmail: true },
-    { id: "linkedin", name: "LinkedIn", icon: "/logolinkedin.png" }, // Change filename here
-    { id: "github", name: "GitHub", icon: "/logogithub.png" }, // Change filename here
-    { id: "twitter", name: "Twitter", icon: "/linkedin.jpg" }, // Change filename here
-    { id: "instagram", name: "Instagram", icon: "/github.jpg" }, // Your instagram logo here
-    { id: "facebook", name: "Facebook", icon: "/medium.jpg" }, // Change filename here
-    { id: "whatsapp", name: "WhatsApp", icon: "/ig.jpg" }, // Change filename here
-    { id: "website", name: "Website", icon: "/yutub.jpg" }, // Change filename here
+    { id: "linkedin", name: "LinkedIn", icon: "/linkedin.png" },
+    { id: "github", name: "GitHub", icon: "/github.png" },
+    { id: "medium", name: "Medium", icon: "/medium.png" },
+    { id: "instagram", name: "Instagram", icon: "/ig.png" },
+    { id: "youtube", name: "YouTube", icon: "/yutub.png" },
   ];
+
+  // ===== CONTEXT MENU HANDLERS =====
+  const handleContextMenu = (e, type, data) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setContextMenu({
+      show: true,
+      x: e.clientX,
+      y: e.clientY,
+      type,
+      data
+    });
+  };
+
+  // ===== DELETE HANDLERS =====
+  const handleDeleteSection = (sectionId) => {
+    setSections(prev => prev.filter(section => section.id !== sectionId));
+    setContextMenu({ show: false, x: 0, y: 0, type: null, data: null });
+  };
+
+  const handleDeleteListItem = (sectionId, itemIndex) => {
+    setSections(prev => prev.map(section => {
+      if (section.id === sectionId) {
+        const newItems = section.items.filter((_, idx) => idx !== itemIndex);
+        // Don't allow deleting the last item
+        if (newItems.length === 0) {
+          alert("Cannot delete the last item. Delete the entire section instead.");
+          return section;
+        }
+        return { ...section, items: newItems };
+      }
+      return section;
+    }));
+    setContextMenu({ show: false, x: 0, y: 0, type: null, data: null });
+  };
+
+  const handleDeleteCard = (sectionId, cardIndex) => {
+    setSections(prev => prev.map(section => {
+      if (section.id === sectionId) {
+        return {
+          ...section,
+          cards: section.cards.filter((_, idx) => idx !== cardIndex)
+        };
+      }
+      return section;
+    }));
+    setContextMenu({ show: false, x: 0, y: 0, type: null, data: null });
+  };
+
+  const handleDeleteContact = (contactId) => {
+    setContactLinks(prev => prev.filter(contact => contact.id !== contactId));
+    setContextMenu({ show: false, x: 0, y: 0, type: null, data: null });
+  };
 
   // ===== HANDLE FOTO =====
   const handleImageUpload = (e) => {
@@ -102,7 +170,6 @@ export default function HelpPage() {
       e.preventDefault();
       const newTag = hashtagInput.trim();
       
-      // Check if hashtag box would overflow
       const tempHashtags = [...hashtags, newTag];
       const estimatedWidth = tempHashtags.reduce((acc, tag) => acc + tag.length * 10 + 40, 0);
       
@@ -371,17 +438,13 @@ export default function HelpPage() {
     );
   };
 
-  // ===== FIXED: Contact blur - only exit edit mode if title is filled =====
   const handleContactBlur = (id, field) => {
     const contact = contactLinks.find((c) => c.id === id);
     
-    // Only exit editing if title is filled (link is optional for non-email)
     if (contact && contact.title && contact.title.trim() !== "") {
-      // For email, only title is required
       if (contact.isEmail) {
         setEditingContact(null);
       } else {
-        // For others, check if we're leaving the last input field
         if (field === 'link') {
           setEditingContact(null);
         }
@@ -400,7 +463,7 @@ export default function HelpPage() {
   };
 
   if (!mounted) {
-    return null; // Prevent hydration mismatch
+    return null;
   }
 
   return (
@@ -421,10 +484,40 @@ export default function HelpPage() {
         </div>
       </header>
 
+      {/* ===== CONTEXT MENU ===== */}
+      {contextMenu.show && (
+        <div 
+          className={styles.contextMenu}
+          style={{ 
+            position: 'fixed',
+            top: contextMenu.y,
+            left: contextMenu.x,
+            zIndex: 9999
+          }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button
+            className={styles.contextMenuButton}
+            onClick={() => {
+              if (contextMenu.type === 'section') {
+                handleDeleteSection(contextMenu.data.sectionId);
+              } else if (contextMenu.type === 'listItem') {
+                handleDeleteListItem(contextMenu.data.sectionId, contextMenu.data.itemIndex);
+              } else if (contextMenu.type === 'card') {
+                handleDeleteCard(contextMenu.data.sectionId, contextMenu.data.cardIndex);
+              } else if (contextMenu.type === 'contact') {
+                handleDeleteContact(contextMenu.data.contactId);
+              }
+            }}
+          >
+            Remove
+          </button>
+        </div>
+      )}
+
       {/* ===== MAIN CONTENT ===== */}
       <main className={styles.mainContainer}>
         <div className={styles.profileSection}>
-          {/* FOTO */}
           <label className={styles.photoWrapper}>
             {image ? (
               <img src={image} alt="Preview" className={styles.photoPreview} />
@@ -434,7 +527,6 @@ export default function HelpPage() {
             <input type="file" accept="image/*" style={{ display: "none" }} onChange={handleImageUpload} />
           </label>
 
-          {/* BOX KANAN */}
           <div className={styles.infoRightWrapper}>
             <div className={styles.infoSection}>
               <textarea placeholder="Your Name" className={styles.nameInput} rows={1} onInput={handleAutoResize} />
@@ -448,7 +540,7 @@ export default function HelpPage() {
           </div>
         </div>
 
-        {/* HASHTAGS - JUSTIFIED WITH LIMIT */}
+        {/* HASHTAGS */}
         <div className={styles.hashtagSection}>
           {hashtags.map((tag, idx) => (
             <div key={idx} className={styles.hashtag} onClick={() => handleRemoveTag(idx)} title="Click to remove">
@@ -465,7 +557,7 @@ export default function HelpPage() {
           />
         </div>
 
-        {/* ===== COMBINED LIST AND CARD SECTIONS - DRAGGABLE ===== */}
+        {/* ===== SECTIONS ===== */}
         {sections.map((section) => (
           <div
             key={section.id}
@@ -490,6 +582,7 @@ export default function HelpPage() {
                     ? handleListTitleChange(section.id, e.target.value)
                     : handleCardTitleChange(section.id, e.target.value)
                 }
+                onContextMenu={(e) => handleContextMenu(e, 'section', { sectionId: section.id })}
                 className={section.type === "list" ? styles.listTitle : styles.cardSectionTitle}
               />
             </div>
@@ -497,7 +590,11 @@ export default function HelpPage() {
             {section.type === "list" ? (
               <div className={styles.listBox}>
                 {section.items.map((item, itemIndex) => (
-                  <div key={itemIndex} className={styles.listItem}>
+                  <div 
+                    key={itemIndex} 
+                    className={styles.listItem}
+                    onContextMenu={(e) => handleContextMenu(e, 'listItem', { sectionId: section.id, itemIndex })}
+                  >
                     <input
                       type="text"
                       placeholder="Title (Ex. Company | Location)"
@@ -531,7 +628,10 @@ export default function HelpPage() {
                 <div className={styles.cardGrid}>
                   {section.cards.map((card, cardIndex) => (
                     <div key={card.id} className={styles.cardItem}>
-                      <label className={styles.cardImageWrapper}>
+                      <label 
+                        className={styles.cardImageWrapper}
+                        onContextMenu={(e) => handleContextMenu(e, 'card', { sectionId: section.id, cardIndex })}
+                      >
                         {card.image ? (
                           <img src={card.image} alt="Card" className={styles.cardImage} />
                         ) : (
@@ -574,7 +674,7 @@ export default function HelpPage() {
           </div>
         ))}
 
-        {/* ADD MORE BUTTON - ABOVE CONTACT */}
+        {/* ADD MORE BUTTON */}
         <div className={styles.addMoreWrapper}>
           <button onClick={toggleOptions} className={styles.addMoreButton} type="button">
             + Add more
@@ -589,17 +689,15 @@ export default function HelpPage() {
           </div>
         </div>
 
-        {/* ===== CONTACT SECTION - MANDATORY AT BOTTOM ===== */}
+        {/* ===== CONTACT SECTION ===== */}
         <div className={styles.contactSection}>
           <h2 className={styles.contactTitle}>My Contact</h2>
           <div className={styles.contactBox}>
-            {/* ADD BUTTON */}
             <div className={styles.contactAddWrapper}>
               <button onClick={toggleLogoOptions} className={styles.contactAddButton} type="button">
                 +
               </button>
 
-              {/* LOGO OPTIONS */}
               <div className={`${styles.logoOptionsWrapper} ${showLogoOptions ? styles.show : ""}`}>
                 {logoOptions.map((logo, idx) => (
                   <button
@@ -616,13 +714,15 @@ export default function HelpPage() {
               </div>
             </div>
 
-            {/* CONTACT LINKS */}
             <div className={styles.contactLinksWrapper}>
               {contactLinks.map((contact) => (
                 <div key={contact.id} className={styles.contactItem}>
                   {editingContact === contact.id ? (
                     <>
-                      <div className={styles.contactIcon}>
+                      <div 
+                        className={styles.contactIcon}
+                        onContextMenu={(e) => handleContextMenu(e, 'contact', { contactId: contact.id })}
+                      >
                         {contact.isEmail ? contact.icon : <img src={contact.icon} alt={contact.name} className={styles.logoImage} />}
                       </div>
                       <input
@@ -652,6 +752,7 @@ export default function HelpPage() {
                       <div 
                         className={styles.contactIcon} 
                         onClick={() => handleEditContact(contact.id)}
+                        onContextMenu={(e) => handleContextMenu(e, 'contact', { contactId: contact.id })}
                         style={{ cursor: 'pointer' }}
                       >
                         {contact.isEmail ? contact.icon : <img src={contact.icon} alt={contact.name} className={styles.logoImage} />}
@@ -677,11 +778,10 @@ export default function HelpPage() {
         </div>
       </main>
 
-      {/* ===== POPUP EDITOR - LEFT SIDE SCROLLABLE ===== */}
+      {/* ===== POPUP EDITOR ===== */}
       {showPopup && popupData && (
         <div className={styles.popupOverlay} onClick={handleClosePopup}>
           <div className={styles.popupContent} onClick={(e) => e.stopPropagation()}>
-            {/* LEFT SIDE - SCROLLABLE */}
             <div className={styles.popupLeft}>
               <textarea
                 placeholder="Project Title"
@@ -699,7 +799,6 @@ export default function HelpPage() {
               />
             </div>
 
-            {/* RIGHT SIDE */}
             <div className={styles.popupRight}>
               <button className={styles.closeButton} onClick={handleClosePopup} type="button">
                 ✕

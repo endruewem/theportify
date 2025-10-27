@@ -39,7 +39,7 @@ export default function HelpPage() {
           </div>
 
           <div className={dashboardStyles.headerLogo}>
-            ThePortify<span className={dashboardStyles.demoTag}>(demo V1.5)</span>
+            ThePortify
           </div>
         </div>
 
@@ -49,27 +49,23 @@ export default function HelpPage() {
           {isDropdownOpen && (
             <div className={dashboardStyles.dropdownMenu}>
               <Link href="/viewprofile" className={dashboardStyles.dropdownItem}>
-                <img src="/logo1.jpg" alt="pic1" className={dashboardStyles.dropdownIcon} />
+                <img src="/viewprofile.jpg" alt="pic1" className={dashboardStyles.dropdownIcon} />
                 View Profile
               </Link>
-              <Link href="/dashboard" className={dashboardStyles.dropdownItem}>
-                <img src="/logo2.jpg" alt="pic2" className={dashboardStyles.dropdownIcon} />
-                Home
-              </Link>
               <Link href="/settings" className={dashboardStyles.dropdownItem}>
-                <img src="/logo3.png" alt="pic3" className={dashboardStyles.dropdownIcon} />
+                <img src="/logo3.jpg" alt="pic2" className={dashboardStyles.dropdownIcon} />
                 Settings
               </Link>
               <Link href="/ourstory" className={dashboardStyles.dropdownItem}>
-                <img src="/logo4.png" alt="pic4" className={dashboardStyles.dropdownIcon} />
+                <img src="/buku.jpg" alt="pic3" className={dashboardStyles.dropdownIcon} />
                 Our Story
               </Link>
               <Link href="/help" className={dashboardStyles.dropdownItem}>
-                <img src="/logo5.jpg" alt="pic5" className={dashboardStyles.dropdownIcon} />
+                <img src="/logo5.jpg" alt="pic4" className={dashboardStyles.dropdownIcon} />
                 Help
               </Link>
               <Link href="/" className={dashboardStyles.dropdownItem}>
-                <img src="/logo6.png" alt="pic6" className={dashboardStyles.dropdownIcon} />
+                <img src="/signout.jpg" alt="pic5" className={dashboardStyles.dropdownIcon} />
                 Sign Out
               </Link>
             </div>
@@ -80,11 +76,11 @@ export default function HelpPage() {
       {/* ===== SIDEBAR ===== */}
       <div className={`${dashboardStyles.sidebar} ${isSidebarOpen ? dashboardStyles.show : ""}`}>
         <Link href="/dashboard" className={dashboardStyles.sidebarItem}>
-          <img src="/logo2.1.png" alt="home-icon" className={dashboardStyles.sidebarIcon} />
+          <img src="/logo2.1.jpg" alt="home-icon" className={dashboardStyles.sidebarIcon} />
           Home
         </Link>
         <Link href="/viewprofile" className={dashboardStyles.sidebarItem}>
-          <img src="/logo2.2.png" alt="profile-icon" className={dashboardStyles.sidebarIcon} />
+          <img src="/logo2.2.jpg" alt="profile-icon" className={dashboardStyles.sidebarIcon} />
           Profile
         </Link>
       </div>

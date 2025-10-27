@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@400;500;600;700&display=swap');
+
 .headerCustom {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 0px;
+  height: 65px;
 }
 
 /* =================== */
@@ -18,9 +21,9 @@
   text-decoration: none;
   color: #000000;
   border: 3px solid #007bff;
-  font-family: "Inter", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 14px;
-  height: 40px;
+  height: 35px;
   background-color: #ffffff;
   padding: 6px 14px;
   border-radius: 40px;
@@ -49,7 +52,7 @@
   background-color: #ffffff;
   color: #000000;
   border: 3px solid #007bff;
-  height: 40px;
+  height: 35px;
   padding: 6px 16px;
   border-radius: 40px;
   font-family: "Inter", sans-serif;
@@ -67,7 +70,7 @@
   background-color: #007bff;
   color: #ffffff;
   border: 3px solid #007bff;
-  height: 40px;
+  height: 35px;
   padding: 6px 16px;
   border-radius: 40px;
   font-family: "Inter", sans-serif;
@@ -85,7 +88,7 @@
   background-color: #007bff;
   color: #ffffff;
   border: 3px solid #007bff;
-  height: 40px;
+  height: 35px;
   padding: 6px 16px;
   border-radius: 40px;
   font-family: "Inter", sans-serif;
@@ -98,6 +101,48 @@
   background-color: #ffffff;
   color: #007bff;
 }
+
+/* ===== CONTEXT MENU ===== */
+.contextMenu {
+  overflow: hidden;
+  animation: contextMenuAppear 0.15s ease-out;
+}
+
+@keyframes contextMenuAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.contextMenuButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 3px solid #ffc8c8; /* munculkan border merah */
+  border-radius: 15px; /* ubah bentuk sudut */
+  padding: 8px 15px;
+  background-color: #ffc8c8; /* warna dasar putih */
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.contextMenuButton:hover {
+  background-color: #fe0004; /* latar merah */
+  color: #ffffff; /* teks putih */
+  border-color: #ff0004; /* border merah solid */
+}
+
 
 /* ===== MAIN CONTAINER ===== */
 .mainContainer {
@@ -219,7 +264,6 @@
 
 .descInput {
   font-family: "Georgia", serif;
-
   font-size: 18px;
   font-weight: 400;
   color: #575757;
@@ -238,32 +282,32 @@
   transition: height 0.2s ease-out;
 }
 
-/* ===== HASHTAG SECTION - JUSTIFIED WITH LIMIT ===== */
+/* ===== HASHTAG SECTION ===== */
 .hashtagSection {
   margin-top: 24px;
   width: 100%;
   max-width: 1183px;
   background-color: #F9F8F7;
   border-radius: 13px;
-  padding: 12px 20px;
+  padding: -20px 20px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   align-content: center;
-  justify-content: center; /* CHANGED TO CENTER FOR JUSTIFIED LOOK */
+  justify-content: center;
   gap: 10px;
   box-sizing: border-box;
   overflow: hidden;
-  min-height: 56px;
+  min-height: 50px;
   margin-bottom: -5px;
 }
 
 .hashtag {
   color: #8E8E8E;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 500;
-  padding: 8px 16px;
-  border-radius: 9999px;
+  padding: 6px 16px;
+  border-radius: 40px;
   background-color: transparent;
   white-space: normal;
   overflow-wrap: anywhere;
@@ -273,8 +317,8 @@
 }
 
 .hashtag:hover {
-  background-color: #e9f2ff;
-  color: #007bff;
+  background-color: #d6d6d6;
+  color: #343434;
 }
 
 .hashtagInput {
@@ -287,7 +331,7 @@
   flex-grow: 0;
   min-width: 100px;
   max-width: 400px;
-  height: 36px;
+  height: 35px;
   box-sizing: border-box;
   align-self: center;
   text-align: center;
@@ -319,7 +363,6 @@
 }
 
 .dragOver {
-  
   background-color: #f0f8ff;
   border-radius: 13px;
 }
@@ -417,6 +460,8 @@
   background-color: #007bff;
   color: #ffffff;
   border: none;
+  height: 35px;
+  width: 88px;
   padding: 10px 20px;
   border-radius: 40px;
   font-family: "Inter", sans-serif;
@@ -603,7 +648,7 @@
 .popupLeft {
   width: 50%;
   padding: 40px;
-  overflow-y: auto; /* ENTIRE LEFT SIDE SCROLLABLE */
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -658,15 +703,15 @@
 /* ===== CLOSE BUTTON ===== */
 .closeButton {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 8px;
+  right: 8px;
   background: none;
   border: none;
   font-size: 24px;
   color: #666;
   cursor: pointer;
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -839,7 +884,7 @@
   gap: 9px;
   background-color: #ffffff;
   border: 2px solid #007bff;
-  border-radius: 40px;
+  border-radius: 30px;
   padding: 6px 6px;
   position: absolute;
   left: 0;
@@ -887,7 +932,7 @@
   transform: scale(1.05);
 }
 
-/* ===== CONTACT SECTION - MANDATORY AT BOTTOM ===== */
+/* ===== CONTACT SECTION ===== */
 .contactSection {
   width: 100%;
   max-width: 1183px;
@@ -908,7 +953,7 @@
 
 .contactBox {
   background-color: #f9f8f7;
-  border-radius: 13px;
+  border-radius: 40px;
   padding: 30px 45px;
   display: flex;
   flex-direction: column;
@@ -924,8 +969,8 @@
 }
 
 .contactAddButton {
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   border-radius: 20px;
   background-color: #007bff;
   color: #ffffff;
@@ -961,60 +1006,11 @@
 }
 
 .logoOption {
-  width: 45px;
-  height: 45px;
-  border-radius: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 18px;
   background-color: #ffffff;
   border: 2px solid #007bff;
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  flex-shrink: 0;
-  opacity: 0;
-  transform: scale(0);
-  overflow: hidden;
-}
-
-.logoOptionsWrapper.show .logoOption {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.logoOption:hover {
-  background-color: #ffffff;
-  transform: scale(1.1);
-}
-
-/* ===== LOGO IMAGE ===== */
-.logoImage {
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
-}
-
-/* ===== CONTACT LINKS WRAPPER ===== */
-.contactLinksWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.contactItem {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 0px 0;
-}
-
-.contactIcon {
-  width: 45px;
-  height: 45px;
-  border-radius: 20px;
-  background-color: #ffffff;
-  border: 2px solid #006adb;
   font-size: 24px;
   display: flex;
   align-items: center;
@@ -1062,17 +1058,16 @@
   flex: 1;
   font-size: 16px;
   font-family: "Inter", sans-serif;
-  font-weight: 600;
-  color: #0071ea;
+  font-weight: 500;
+  color: #004ea2;
   text-decoration: none;
   padding: 12px 18px;
-  border-radius: 8px;
+  border-radius: 40px;
   transition: all 0.2s ease;
   background-color: transparent;
 }
 
 .contactLink:hover {
-  
   text-decoration: underline;
 }
 
@@ -1084,6 +1079,52 @@
   font-weight: 600;
   color: #333;
   padding: 12px 18px;
-  border-radius: 8px;
+  border-radius: 40px;
   background-color: transparent;
+}
+
+.logoOptionsWrapper.show .logoOption {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.logoOption:hover {
+  background-color: #ffffff;
+  transform: scale(1.1);
+}
+
+/* ===== LOGO IMAGE ===== */
+.logoImage {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+/* ===== CONTACT LINKS WRAPPER ===== */
+.contactLinksWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0px 0;
+}
+
+.contactIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 18px;
+  background-color: #ffffff;
+  border: 2px solid #006adb;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  overflow: hidden;
 }

@@ -40,7 +40,7 @@ export default function DashboardPage() {
     </div>
 
     <div className={styles.headerLogo}>
-      ThePortify<span className={styles.demoTag}>(demo V1.9)</span>
+      ThePortify
     </div>
   </div>
 
@@ -50,27 +50,23 @@ export default function DashboardPage() {
     {isDropdownOpen && (
       <div className={styles.dropdownMenu}>
         <Link href="/viewprofile" className={styles.dropdownItem}>
-          <img src="/potomata.jpg" alt="pic1" className={styles.dropdownIcon} />
+          <img src="/viewprofile.jpg" alt="pic1" className={styles.dropdownIcon} />
           View Profile
         </Link>
-        <Link href="/dashboard" className={styles.dropdownItem}>
-          <img src="/logo2.jpg" alt="pic2" className={styles.dropdownIcon} />
-          Home
-        </Link>
         <Link href="/settings" className={styles.dropdownItem}>
-          <img src="/logo3.png" alt="pic3" className={styles.dropdownIcon} />
+          <img src="/logo3.jpg" alt="pic2" className={styles.dropdownIcon} />
           Settings
         </Link>
         <Link href="/ourstory" className={styles.dropdownItem}>
-          <img src="/logokopi.jpg" alt="pic4" className={styles.dropdownIcon} />
+          <img src="/buku.jpg" alt="pic3" className={styles.dropdownIcon} />
           Our Story
         </Link>
         <Link href="/help" className={styles.dropdownItem}>
-          <img src="/logo5.jpg" alt="pic5" className={styles.dropdownIcon} />
+          <img src="/logo5.jpg" alt="pic4" className={styles.dropdownIcon} />
           Help
         </Link>
         <Link href="/" className={styles.dropdownItem}>
-          <img src="/logo6.png" alt="pic6" className={styles.dropdownIcon} />
+          <img src="/signout.jpg" alt="pic5" className={styles.dropdownIcon} />
           Sign Out
         </Link>
       </div>
@@ -118,9 +114,8 @@ export default function DashboardPage() {
         </Link>
 
         <h1 className={styles.mainTitle}>
-          Welcome, to <span className={styles.highlight}>ThePortify</span>!
+          Show, dont tell.
         </h1>
-        <p>Show, dont tell</p>
         
       </main>
 
