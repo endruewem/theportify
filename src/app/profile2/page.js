@@ -51,14 +51,16 @@ export default function HelpPage() {
   }, []);
 
   // ===== LOGO OPTIONS =====
-  const logoOptions = [
-    { id: "email", name: "Email", icon: "📧", isEmail: true },
-    { id: "linkedin", name: "LinkedIn", icon: "/linkedin.png" },
-    { id: "github", name: "GitHub", icon: "/github.png" },
-    { id: "medium", name: "Medium", icon: "/medium.png" },
-    { id: "instagram", name: "Instagram", icon: "/ig.png" },
-    { id: "youtube", name: "YouTube", icon: "/yutub.png" },
-  ];
+  // ===== LOGO OPTIONS =====
+const logoOptions = [
+  { id: "phone", name: "Phone", icon: "/phone.png", isPhoneOrEmail: true },
+  { id: "email", name: "Email", icon: "/email.png", isPhoneOrEmail: true },
+  { id: "linkedin", name: "LinkedIn", icon: "/linkedin.png" },
+  { id: "github", name: "GitHub", icon: "/github.png" },
+  { id: "medium", name: "Medium", icon: "/medium.png" },
+  { id: "instagram", name: "Instagram", icon: "/ig.png" },
+  { id: "youtube", name: "YouTube", icon: "/yutub.png" },
+];
 
   // ===== CONTEXT MENU HANDLERS =====
   const handleContextMenu = (e, type, data) => {
@@ -416,19 +418,19 @@ export default function HelpPage() {
   };
 
   const handleSelectLogo = (logo) => {
-    const newContact = {
-      id: Date.now(),
-      type: logo.id,
-      icon: logo.icon,
-      name: logo.name,
-      title: "",
-      link: "",
-      isEmail: logo.isEmail || false,
-    };
-    setContactLinks((prev) => [...prev, newContact]);
-    setShowLogoOptions(false);
-    setEditingContact(newContact.id);
+  const newContact = {
+    id: Date.now(),
+    type: logo.id,
+    icon: logo.icon,
+    name: logo.name,
+    title: "",
+    link: "",
+    isPhoneOrEmail: logo.isPhoneOrEmail || false,
   };
+  setContactLinks((prev) => [...prev, newContact]);
+  setShowLogoOptions(false);
+  setEditingContact(newContact.id);
+};
 
   const handleContactChange = (id, field, value) => {
     setContactLinks((prev) =>
@@ -438,19 +440,19 @@ export default function HelpPage() {
     );
   };
 
-  const handleContactBlur = (id, field) => {
-    const contact = contactLinks.find((c) => c.id === id);
-    
-    if (contact && contact.title && contact.title.trim() !== "") {
-      if (contact.isEmail) {
+ const handleContactBlur = (id, field) => {
+  const contact = contactLinks.find((c) => c.id === id);
+  
+  if (contact && contact.title && contact.title.trim() !== "") {
+    if (contact.isPhoneOrEmail) {
+      setEditingContact(null);
+    } else {
+      if (field === 'link') {
         setEditingContact(null);
-      } else {
-        if (field === 'link') {
-          setEditingContact(null);
-        }
       }
     }
-  };
+  }
+};
 
   const handleContactKeyDown = (e, id, field) => {
     if (e.key === "Enter") {
@@ -473,14 +475,14 @@ export default function HelpPage() {
         <div className={styles.leftSection}>
           <div className={dashboardStyles.headerLogo}>ThePortify</div>
           <Link href="/dashboard" className={styles.homeButton}>
-            Home
+            🏠︎
           </Link>
         </div>
 
         <div className={styles.rightSection}>
           <button className={styles.saveButton} type="button">Save</button>
           <button className={styles.pdfButton} type="button">Save as PDF</button>
-          <button className={styles.shareButton} type="button">Share</button>
+          <button className={styles.shareButton} type="button">Share!</button>
         </div>
       </header>
 
@@ -549,7 +551,7 @@ export default function HelpPage() {
           ))}
           <input 
             type="text" 
-            placeholder="Add hashtag..." 
+            placeholder="#AddHashtag!" 
             value={hashtagInput} 
             onChange={(e) => setHashtagInput(e.target.value)} 
             onKeyDown={handleHashtagKeyDown} 
@@ -674,7 +676,7 @@ export default function HelpPage() {
           </div>
         ))}
 
-        {/* ADD MORE BUTTON */}
+         {/* ADD MORE BUTTON */}
         <div className={styles.addMoreWrapper}>
           <button onClick={toggleOptions} className={styles.addMoreButton} type="button">
             + Add more
@@ -708,7 +710,7 @@ export default function HelpPage() {
                     title={logo.name}
                     type="button"
                   >
-                    {logo.isEmail ? logo.icon : <img src={logo.icon} alt={logo.name} className={styles.logoImage} />}
+                    <img src={logo.icon} alt={logo.name} className={styles.logoImage} />
                   </button>
                 ))}
               </div>
@@ -723,11 +725,11 @@ export default function HelpPage() {
                         className={styles.contactIcon}
                         onContextMenu={(e) => handleContextMenu(e, 'contact', { contactId: contact.id })}
                       >
-                        {contact.isEmail ? contact.icon : <img src={contact.icon} alt={contact.name} className={styles.logoImage} />}
+                        <img src={contact.icon} alt={contact.name} className={styles.logoImage} />
                       </div>
                       <input
                         type="text"
-                        placeholder={contact.isEmail ? "Email Address" : "Your Contact Name"}
+                        placeholder={contact.isPhoneOrEmail ? (contact.type === "phone" ? "Phone Number" : "Email Address") : "Your Contact Name"}
                         value={contact.title}
                         onChange={(e) => handleContactChange(contact.id, "title", e.target.value)}
                         onBlur={() => handleContactBlur(contact.id, 'title')}
@@ -735,7 +737,7 @@ export default function HelpPage() {
                         className={styles.contactTitleInput}
                         autoFocus
                       />
-                      {!contact.isEmail && (
+                      {!contact.isPhoneOrEmail && (
                         <input
                           type="text"
                           placeholder="Link (e.g., https://linkedin.com/in/yourname)"
@@ -755,20 +757,21 @@ export default function HelpPage() {
                         onContextMenu={(e) => handleContextMenu(e, 'contact', { contactId: contact.id })}
                         style={{ cursor: 'pointer' }}
                       >
-                        {contact.isEmail ? contact.icon : <img src={contact.icon} alt={contact.name} className={styles.logoImage} />}
+                        <img src={contact.icon} alt={contact.name} className={styles.logoImage} />
                       </div>
-                      {contact.isEmail ? (
-                        <span className={styles.contactEmailText}>{contact.title}</span>
-                      ) : (
-                        <a
-                          href={contact.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={styles.contactLink}
-                        >
-                          {contact.title || contact.name}
-                        </a>
-                      )}
+                      {contact.isPhoneOrEmail ? (
+  <span className={styles.contactEmailText}>{contact.title}</span>
+) : (
+  <a
+    href={contact.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    className={styles.contactLink}
+  >
+    {contact.title || contact.name}
+  </a>
+)}
+
                     </>
                   )}
                 </div>

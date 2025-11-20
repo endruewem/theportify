@@ -203,7 +203,7 @@
 
 /* ===== INFO (KANAN) ===== */
 .infoSection {
-  background-color: #F9F8F7;
+  background-color: #F9F9F9;
   border-radius: 13px;
   padding: 30px 45px;
   display: flex;
@@ -251,7 +251,7 @@
 
 .descBox {
   flex: none;
-  background-color: #F9F8F7;
+  background-color: #F9F9F9;
   border-radius: 13px;
   padding: 30px 45px;
   display: flex;
@@ -287,7 +287,7 @@
   margin-top: 24px;
   width: 100%;
   max-width: 1183px;
-  background-color: #F9F8F7;
+  background-color: #F9F9F9;
   border-radius: 13px;
   padding: -20px 20px;
   display: flex;
@@ -393,7 +393,7 @@
 }
 
 .listBox {
-  background-color: #f9f8f7;
+  background-color: #F9F9F9;
   border-radius: 13px;
   padding: 30px 45px;
   display: flex;
@@ -513,7 +513,7 @@
 
 /* ===== CARD ITEM ===== */
 .cardItem {
-  background-color: #f9f8f7;
+  background-color: #F9F9F9;
   border-radius: 13px;
   padding: 0;
   display: flex;
@@ -530,7 +530,7 @@
 .cardImageWrapper {
   width: 100%;
   aspect-ratio: 16/9;
-  background-color: #e5e5e5;
+  background-color: #EAEAEA;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -952,7 +952,7 @@
 }
 
 .contactBox {
-  background-color: #f9f8f7;
+  background-color: #F9F9F9;
   border-radius: 40px;
   padding: 30px 45px;
   display: flex;
@@ -1050,7 +1050,7 @@
 
 .contactTitleInput:focus,
 .contactLinkInput:focus {
-  background-color: #fbfbfb;
+  background-color: #fffefe;
   box-shadow: 0 0 0 2px #e2e2e2;
 }
 

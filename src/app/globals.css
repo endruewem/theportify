@@ -314,21 +314,20 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 200px 0 70px; /* jarak atas & bawah */
+  margin: 80px 0 70px; /* jarak atas & bawah */
 }
 
 .mading-image {
   width: 850px;
   height: 500px; /* biar nggak terlalu lebar di layar besar */
   border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(52, 52, 52, 0.15);
+  
   object-fit: cover;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .mading-image:hover {
-  transform: scale(1.02);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+
 }
 
 /* === FOOTER === */

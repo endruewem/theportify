@@ -135,29 +135,7 @@ export default function HomePage() {
 
 
                 {/* ===== NEW IMAGE SHOWCASE SECTION ===== */}
-        <section className="image-showcase">
-          <h2 className="image-showcase-title">
-            Meet our team
-          </h2>
-
-          <div className="image-showcase-list">
-            <div className="image-showcase-item">
-              <img src="/muka1.png" alt="Member 1" />
-              <p className="image-caption">member1</p>
-            </div>
-
-            <div className="image-showcase-item">
-              <img src="/muka2.png" alt="Member 2" />
-              <p className="image-caption">member2</p>
-            </div>
-
-            <div className="image-showcase-item">
-              <img src="/muka3.png" alt="Member 3" />
-              <p className="image-caption">member3</p>
-            </div>
-          </div>
-        </section>
-
+       
 
 
 
