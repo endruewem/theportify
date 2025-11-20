@@ -140,7 +140,7 @@ export default function HomePage() {
 
 
         <p className="feature-quote">
-          "Every project tells a story. Make yours unforgettable."
+          &quot;Every project tells a story. Make yours unforgettable.&quot;
         </p>
 
 

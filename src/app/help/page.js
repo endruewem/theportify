@@ -97,7 +97,7 @@ export default function HelpPage() {
     marginTop: "80px",
   }}
 >
-  "Our help is in the name of the Lord, who made heaven and earth" - Psalm 124:8
+  &quot;Our help is in the name of the Lord, who made heaven and earth&quot; - Psalm 124:8
 </div>
 
     </>
