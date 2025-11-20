@@ -26,7 +26,7 @@ export default function SignupPage() {
       <div className={styles.right}>
         <div className={styles.card}>
           <h2 className={styles.title}>Create Account.</h2>
-          <p className={styles.subtitle}>Sign up your 'ThePortify' account to get started</p>
+          <p className={styles.subtitle}>Sign up your ThePortify account to get started</p>
 
           <form className={styles.form} onSubmit={handleSignup}>
             <label htmlFor="name" className={styles.label}>

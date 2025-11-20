@@ -45,7 +45,7 @@ export default function CodePassPage() {
       <div className={styles.right}>
         <div className={styles.card}>
           <h2 className={styles.title}>Enter Verification Code</h2>
-          <p className={styles.subtitle}>We've sent a 6-digit code to your email.</p>
+          <p className={styles.subtitle}>Weve sent a 6-digit code to your email.</p>
 
           <div className={styles.codeInputs}>
             {[...Array(6)].map((_, i) => (
